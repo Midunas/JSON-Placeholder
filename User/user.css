@@ -1,0 +1,36 @@
+body{
+    max-width: 1240px;
+    margin: auto;
+    background: #f2f2f2;
+}
+h1.header{
+    margin-bottom: 30px;
+}
+#wrapper{
+    margin: auto;
+    width: 1040px;
+    display: flex;
+    flex-wrap: wrap;
+}
+.user-wrap{
+    width: 30%;
+    margin: 15px;
+    text-align: center;
+    background-color: #3f71bd;
+    color: white;
+    font-size: 17px;
+}
+.header{
+    margin: auto;
+    text-align: center;
+    margin-top: 100px;
+}
+a{
+    color: white;
+}
+button{
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: none;
+}

@@ -47,6 +47,7 @@ fetch("https://jsonplaceholder.typicode.com/users")
     
     let showDataLink = document.createElement('a')
     showDataLink.href = `http://127.0.0.1:5500/User.html?user_id=${user.id}`;
+    showDataLink.target = `_blank`;
     let showDataButton = document.createElement('button');
     showDataButton.textContent = `Show data`;
     showDataLink.append(showDataButton)

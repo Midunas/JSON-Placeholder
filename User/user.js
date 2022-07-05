@@ -64,8 +64,7 @@ fetch("https://jsonplaceholder.typicode.com/users/"+ userId)
 
         postItem.innerHTML = `<h4> ${post.title}</h4>
                               <p>${post.body}</p>
-                              <a class="read-more" href="./post.html?post_id${post.id}">Read More </a>`
-
+                              <a class="read-more" href="./post.html?post_id=${post.id}">Read More</a>`;
 
         postItem.append(postTitle);
         postWrap.append(postsHeader,postItem);

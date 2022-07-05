@@ -27,8 +27,6 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=15')
             let postAuthor = document.createElement('a')
             postAuthor.href = '#';
 
-            // Komentarų divas ir draugai
-
             let commentDiv = document.createElement('div');
             commentDiv.classList.add('comment-div');
             commentDiv.style.display = 'none';
@@ -50,7 +48,6 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=15')
                 }
             }
 
-            // Viską appendinu
 
             commentDiv.append(postCommentTitle,postCommentBody,postCommentEmail);
             postDiv.append(postTitle,postParagraph,postAuthor,showCommentsButton,commentDiv);
@@ -60,7 +57,7 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=15')
                 .then(res => res.json())
                 .then(user => {
 
-                postAuthor.innerHTML = `Author: <a href="/User.html?user_id=${user.id}">${user.name} <br><br></a>`;
+                postAuthor.innerHTML = `Author: <a href="User.html?user_id=${user.id}">${user.name} <br><br></a>`;
                 
             })
 

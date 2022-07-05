@@ -1,3 +1,8 @@
+let queryParams = document.location.search;
+let urlParams = new URLSearchParams(queryParams);
+let userId = urlParams.get('user_id');
+
+
 let mainWrapper = document.getElementById("wrapper");
 
 
@@ -41,7 +46,7 @@ fetch("https://jsonplaceholder.typicode.com/users")
     userCompany.textContent = user.company.name;
     
     let showDataLink = document.createElement('a')
-    showDataLink.href = `http://127.0.0.1:5500/User/user.html`;
+    showDataLink.href = `http://127.0.0.1:5500/User.html?user_id=${user.id}`;
     let showDataButton = document.createElement('button');
     showDataButton.textContent = `Show data`;
     showDataLink.append(showDataButton)

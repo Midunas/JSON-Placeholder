@@ -20,7 +20,7 @@ fetch("https://jsonplaceholder.typicode.com/users")
     userUsername.innerHTML = `Username: ${user.username}`;
 
     let userEmail = document.createElement("p");
-    userEmail.innerHTML = `Email: ${user.email}`;
+    userEmail.innerHTML = `Email:<a href="mailto:"${user.email}">${user.email}</a>`;
 
     let lng = user.address.geo.lng;
     let lat = user.address.geo.lat;
@@ -31,19 +31,22 @@ fetch("https://jsonplaceholder.typicode.com/users")
     addressLink.target = `_blank`;
 
     let userPhone = document.createElement('p');
-    userPhone.innerHTML = `Phone: ${user.phone}`;
+    userPhone.innerHTML = `Phone: <a href="tel:${user.phone}"> ${user.phone}</a>`;
+
 
     let userWeb = document.createElement('p');
-    userWeb.textContent = `www.${user.website}`;
+    userWeb.innerHTML = `<a href="${user.website}"target="_blank">www.${user.website}</a>`;
         
     let userCompany = document.createElement('p');
     userCompany.textContent = user.company.name;
     
+    let showDataLink = document.createElement('a')
+    showDataLink.href = `http://127.0.0.1:5500/User/user.html`;
     let showDataButton = document.createElement('button');
     showDataButton.textContent = `Show data`;
+    showDataLink.append(showDataButton)
 
-
-    userItem.append(userImage, userName, userUsername, userEmail, addressLink, userPhone, userWeb,userCompany,showDataButton);
+    userItem.append(userImage, userName, userUsername, userEmail, addressLink, userPhone, userWeb,userCompany,showDataLink);
 
       });
 

@@ -42,7 +42,6 @@ fetch("https://jsonplaceholder.typicode.com/users")
     let showDataButton = document.createElement('button');
     showDataButton.textContent = `Show data`;
 
-
     userItem.append(userImage, userName, userUsername, userEmail, addressLink, userPhone, userWeb,userCompany,showDataButton);
 
       });

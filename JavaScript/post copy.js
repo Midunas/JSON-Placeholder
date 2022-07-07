@@ -1,8 +1,7 @@
 let mainWrapper = document.querySelector('#wrapper');
 let userName = '';
-let albumsWrapper = document.querySelector('#user-albums')
 
-fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+fetch('https://jsonplaceholder.typicode.com/posts?_limit=15')
     .then(res => res.json())
     .then(posts => {
 
@@ -24,8 +23,12 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
             postParagraph.classList.add('post-content')
             postParagraph.textContent = paragraph;
             
-            let postAuthor = document.createElement('a')
-            postAuthor.href = '#';
+            let postAuthor = document.createElement('a');
+
+            let morePosts = document.createElement('a'); 
+            morePosts.href = `http://127.0.0.1:5500/posts.html?userId=${post.userId}`;
+            morePosts.innerHTML = `More of this authors posts <br><br>`;
+
 
             let commentDiv = document.createElement('div');
             commentDiv.classList.add('comment-div');
@@ -50,7 +53,7 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
 
 
             commentDiv.append(postCommentTitle,postCommentBody,postCommentEmail);
-            postDiv.append(postTitle,postParagraph,postAuthor,showCommentsButton,commentDiv);
+            postDiv.append(postTitle,postParagraph,postAuthor,morePosts,showCommentsButton,commentDiv,);
             mainWrapper.append(postDiv);
 
             fetch('https://jsonplaceholder.typicode.com/users/' + post.userId)
@@ -58,6 +61,7 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
                 .then(user => {
 
                 postAuthor.innerHTML = `Author: <a href="User.html?user_id=${user.id}">${user.name} <br><br></a>`;
+
                 
             })
 
@@ -78,71 +82,3 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
         })
 
     })
-
-    fetch('https://jsonplaceholder.typicode.com/albums?_limit=15')
-    .then(res => res.json())
-    .then(albums => {
-  
-      albums.map(album => {
-        let albumItem = document.createElement('div');
-        albumItem.classList.add('album-item');
-  
-        fetch('https://jsonplaceholder.typicode.com/users/' + album.userId)
-          .then(res => res.json())
-          .then(user => {
-  
-            fetch(`https://jsonplaceholder.typicode.com/albums/${album.id}/photos?_limit=1`)
-              .then(res => res.json())
-              .then(photos => {
-                albumItem.innerHTML = `<h3><a href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${album.title}</a></h3>
-                                       <div>Album created by: ${user.name}</div>
-                                       <img src="${photos[0].thumbnailUrl}">`;
-              })
-          })
-  
-          albumsWrapper.prepend(albumItem);
-      })
-  
-  
-    })
-
-
-      
-    // fetch('https://jsonplaceholder.typicode.com/albums?/albums?_limit=15')
-    // .then(res => res.json())
-    // .then(albums => {
-
-    //     albums.map(album => {
-
-    //         fetch('https://jsonplaceholder.typicode.com/users'+ album.userId)
-    //             .then(res => res.json())
-    //             .then(user => {
-                   
-    //                 fetch(`https://jsonplaceholder.typicode.com/albums/${album.id}/photos?_limit=1`)
-    //                     .then(res => res.json())
-    //                     .then(photos => {
-
-    //                         let albumItem = document.createElement('div')
-    //                         albumItem.classList.add('album-item');
-                    
-    //                         let albumTitle = document.createElement('h3')
-    //                         albumTitle.innerHTML = `<a href="./album.html>"${album.title}</a>`;
-                
-    //                         let albumAuthor = document.createElement('span');
-    //                         albumAuthor.innerHTML = `Album made by: ${user.name}`;
-
-    //                         let albumImage = document.createElement('img');
-    //                         albumImage.src = photos[0].thumbnailUrl;
-
-
-    //                     })
-
-
-    //         albumWrapper.append(albumItem);
-
-
-    //     })
-    //     })
-
-
-    //   })

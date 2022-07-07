@@ -70,7 +70,7 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=4')
                     comments.map(comment => {
                         
                         postCommentTitle.textContent = `Title: ${comment.name}`;
-                        postCommentEmail.textContent = `Email: ${comment.email}`;
+                        postCommentEmail.innerHTML = `<strong>Email:</strong> ${comment.email}`;
                         postCommentBody.innerHTML = `<strong>Comment</strong>: <br><br> ${comment.body}`;
                         
                     })

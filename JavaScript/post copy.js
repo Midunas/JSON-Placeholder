@@ -1,9 +1,7 @@
 let mainWrapper = document.querySelector('#wrapper');
 let userName = '';
-let albumsWrapper = document.querySelector('#user-albums')
-// let usersButton = document.querySelector('')
 
-fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
+fetch('https://jsonplaceholder.typicode.com/posts?_limit=15')
     .then(res => res.json())
     .then(posts => {
 
@@ -25,8 +23,12 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
             postParagraph.classList.add('post-content')
             postParagraph.textContent = paragraph;
             
-            let postAuthor = document.createElement('a')
-            postAuthor.href = '#';
+            let postAuthor = document.createElement('a');
+
+            let morePosts = document.createElement('a'); 
+            morePosts.href = `http://127.0.0.1:5500/posts.html?userId=${post.userId}`;
+            morePosts.innerHTML = `More of this authors posts <br><br>`;
+
 
             let commentDiv = document.createElement('div');
             commentDiv.classList.add('comment-div');
@@ -37,8 +39,7 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
             let postCommentEmail = document.createElement('p');
             
             let showCommentsButton= document.createElement('button');
-            showCommentsButton.classList.add('comments-button');
-            showCommentsButton.textContent = `View comments`;
+            showCommentsButton.textContent = `Show comments`;
 
             showCommentsButton.onclick = function () {
                 if (commentDiv.style.display == "none") {
@@ -46,13 +47,13 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
                     showCommentsButton.textContent = `Hide comments`;
                 } else {
                   commentDiv.style.display = "none";
-                  showCommentsButton.textContent = `View comments`;
+                  showCommentsButton.textContent = `Show comments`;
                 }
             }
 
 
             commentDiv.append(postCommentTitle,postCommentBody,postCommentEmail);
-            postDiv.append(postTitle,postParagraph,postAuthor,showCommentsButton,commentDiv);
+            postDiv.append(postTitle,postParagraph,postAuthor,morePosts,showCommentsButton,commentDiv,);
             mainWrapper.append(postDiv);
 
             fetch('https://jsonplaceholder.typicode.com/users/' + post.userId)
@@ -60,6 +61,7 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
                 .then(user => {
 
                 postAuthor.innerHTML = `Author: <a href="User.html?user_id=${user.id}">${user.name} <br><br></a>`;
+
                 
             })
 
@@ -80,32 +82,3 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
         })
 
     })
-
-    fetch('https://jsonplaceholder.typicode.com/albums?_limit=18')
-    .then(res => res.json())
-    .then(albums => {
-  
-      albums.map(album => {
-        let albumItem = document.createElement('div');
-        albumItem.classList.add('album-item');
-  
-        fetch('https://jsonplaceholder.typicode.com/users/' + album.userId)
-          .then(res => res.json())
-          .then(user => {
-  
-            fetch(`https://jsonplaceholder.typicode.com/albums/${album.id}/photos?_limit=1`)
-              .then(res => res.json())
-              .then(photos => {
-                albumItem.innerHTML = `<h4><a href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${album.title}</a></h4>
-                                       <div>Album created by: ${user.name}</div> <br>
-                                       <img src="${photos[0].thumbnailUrl}">`;
-              })
-          })
-  
-          albumsWrapper.prepend(albumItem);
-      })
-  
-  
-    })
-
-

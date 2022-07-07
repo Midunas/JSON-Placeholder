@@ -4,22 +4,34 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>POSTS</title>
+    <title>Home</title>
     <script src="./JavaScript/script.js" defer></script>
     <link rel="stylesheet" href="./Style/style.css" />
+    <link rel="stylesheet" href="./Style/navbar.css" />
   </head>
   <body>
     <div class="header">
-      <h1>Posts</h1>
-      <a
-        class="all-users-link"
-        href="http://127.0.0.1:5500/users.html"
-        target="_blank"
-      >
-        <input class="all-users-button" type="button" value="All Users" />
-      </a>
+      <img class="logo-image" src="./images/lgorandom.JPG" />
+      <span class="page-name">Home</span>
+      <ul>
+        <li>
+          <a href="http://127.0.0.1:5500/index.html">Home</a>
+        </li>
+        <li><a href="http://127.0.0.1:5500/users.html">Users</a></li>
+        <li><a href="http://127.0.0.1:5500/albums.html">Albums</a></li>
+        <li><a href="http://127.0.0.1:5500/posts.html">Posts</a></li>
+        <li>
+          <form>
+            <input id="search" type="text" placeholder="Search.." />
+          </form>
+        </li>
+      </ul>
     </div>
-    <div id="wrapper"></div>
+    <div id="wrapper">
+      <!-- <h1>Welcome to Leaflet - "Data made complicated"</h1> -->
+      <h2>Posts:</h2>
+    </div>
+    <div class="albums-header"><h2>Albums</h2></div>
     <div id="user-albums"></div>
   </body>
 </html>

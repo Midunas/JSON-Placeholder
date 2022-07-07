@@ -2,16 +2,15 @@ let queryParams = document.location.search;
 let urlParams = new URLSearchParams(queryParams);
 let userId = urlParams.get('user_id');
 
-console.log(userId);
 
 let mainWrapper = document.getElementById("wrapper");
-let postWrap = document.createElement('div');
-postWrap.classList.add('post-wrap');
 
 
-fetch("https://jsonplaceholder.typicode.com/users/"+ userId)
+fetch("https://jsonplaceholder.typicode.com/users")
   .then((res) => res.json())
-  .then((user) => {
+  .then((users) => {
+    users.map((user) => {
+
     
     let userItem = document.createElement("div");
     userItem.classList.add("user-wrap");
@@ -39,37 +38,23 @@ fetch("https://jsonplaceholder.typicode.com/users/"+ userId)
     let userPhone = document.createElement('p');
     userPhone.innerHTML = `Phone: <a href="tel:${user.phone}"> ${user.phone}</a>`;
 
+
     let userWeb = document.createElement('p');
     userWeb.innerHTML = `<a href="${user.website}"target="_blank">www.${user.website}</a>`;
         
     let userCompany = document.createElement('p');
     userCompany.textContent = user.company.name;
     
+    let showDataLink = document.createElement('a')
+    showDataLink.href = `http://127.0.0.1:5500/User.html?user_id=${user.id}`;
+    showDataLink.target = `_blank`;
+    let showDataButton = document.createElement('button');
+    showDataButton.textContent = `Show data`;
+    showDataLink.append(showDataButton)
 
-    userItem.append(userImage, userName, userUsername, userEmail, addressLink, userPhone, userWeb,userCompany);
-
-    fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
-    .then(res => res.json())
-    .then(posts => {
-
-      let postsHeader = document.createElement('h1');
-      postsHeader.textContent= ``;
-      let postTitle = document.createElement('h3');
-      postTitle.textContent = posts.title;
-      
-      posts.map(post => {
-       
-        let postItem = document.createElement('div');
-        postItem.classList.add('post-item');
-
-        postItem.innerHTML = `<h4> ${post.title}</h4>
-                              <p>${post.body}</p>
-                              <a class="read-more" href="./post.html?post_id=${post.id}">Read More</a>`;
-
-        postItem.append(postTitle);
-        postWrap.append(postsHeader,postItem);
-        mainWrapper.append(postWrap);
-      })
-    })
+    userItem.append(userImage, userName, userUsername, userEmail, addressLink, userPhone, userWeb,userCompany,showDataLink);
 
       });
+
+    });
+  

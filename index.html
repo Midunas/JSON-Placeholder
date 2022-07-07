@@ -8,18 +8,20 @@
     <script src="./JavaScript/script.js" defer></script>
     <link rel="stylesheet" href="./Style/style.css" />
     <link rel="stylesheet" href="./Style/navbar.css" />
+    <link rel="stylesheet" href="./Style/users.css" />
   </head>
   <body>
     <div class="header">
       <img class="logo-image" src="./images/lgorandom.JPG" />
+      <span class="logo-name">Leaflet</span>
       <span class="page-name">Home</span>
       <ul>
         <li>
-          <a href="http://127.0.0.1:5500/index.html">Home</a>
+          <a href="./index.html">Home</a>
         </li>
-        <li><a href="http://127.0.0.1:5500/users.html">Users</a></li>
-        <li><a href="http://127.0.0.1:5500/albums.html">Albums</a></li>
-        <li><a href="http://127.0.0.1:5500/posts.html">Posts</a></li>
+        <li><a href="./users.html?">Users</a></li>
+        <li><a href="./albums.html">Albums</a></li>
+        <li><a href="post.html">Posts</a></li>
         <li>
           <form>
             <input id="search" type="text" placeholder="Search.." />
@@ -27,11 +29,25 @@
         </li>
       </ul>
     </div>
-    <div id="wrapper">
-      <!-- <h1>Welcome to Leaflet - "Data made complicated"</h1> -->
-      <h2>Posts:</h2>
+    <h2>Here you will find:</h2>
+    <div class="item-names">
+      <h3>Posts</h3>
+      <h3>Albums</h3>
+      <h3>Users</h3>
     </div>
-    <div class="albums-header"><h2>Albums</h2></div>
-    <div id="user-albums"></div>
+    <div class="main-elements-wrap">
+      <div id="posts-wrapper">
+        <!-- <h1>Welcome to Leaflet - "Data made complicated"</h1> -->
+        <!-- <h2>Here you will find:</h2>
+        <h3>Posts</h3> -->
+      </div>
+
+      <div id="albums-wrapper">
+        <!-- <h3 class="albums-title">Albums</h3> -->
+        <div id="user-albums"></div>
+      </div>
+
+      <div id="users-wrapper"></div>
+    </div>
   </body>
 </html>

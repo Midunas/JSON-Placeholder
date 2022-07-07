@@ -4,7 +4,37 @@ body{
 }
 #wrapper{
     margin: auto;
-    width: 50%;
+    width: 80%;
+}
+h2{ 
+    margin: auto;
+    padding-top: 50px ;
+    padding-bottom: 50px ;
+
+    max-width: 1230px;
+}
+.item-names{
+    margin: auto;
+    width: 48%;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 250px;
+}
+.main-elements-wrap{
+    max-width: 1230px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+}
+#posts-wrapper{
+    width: 30%;
+}
+#albums-wrapper{
+    width: 30%;
+}
+#users-wrapper{
+    width: 30%;
 }
 .post-wrap{
     background-color: white;
@@ -22,29 +52,36 @@ body{
 }
 #user-albums{
     display: flex;
+    margin: auto;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     text-align: center;
-}
-.albums-header h2{
-    text-align: center;
-    margin: auto;
-    width: 50%;
-}
-.album-item{
     width: 30%;
 }
 .album-item h3 a{
     width: 20px;
 }
-#search{
-float: right;
-padding: 8px;
-border: none;
-border-radius: 2px;
-opacity: 90%;
-margin-top: 8px;
-margin-right: 16px;
-font-size: 14px;
+.albums-title {
+    margin-bottom: -20px;
+}
+#search {
+    float: right;
+    padding: 8px;
+    border: none;
+    border-radius: 2px;
+    opacity: 90%;
+    margin-top: 8px;
+    margin-right: 16px;
+    font-size: 14px;
+    }
+.user-wrap-home{
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 48%;
+    text-align: center;
+    background-color: #3f71bd;
+    color: white;
+    font-size: 17px;
 }

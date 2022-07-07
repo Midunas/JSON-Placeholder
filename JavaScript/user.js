@@ -26,7 +26,7 @@ fetch("https://jsonplaceholder.typicode.com/users/"+ userId)
     userUsername.innerHTML = `Username: ${user.username}`;
 
     let userEmail = document.createElement("p");
-    userEmail.innerHTML = `Email:<a href="mailto:"${user.email}">${user.email}</a>`;
+    userEmail.innerHTML = `Email: <a href="mailto:"${user.email}">${user.email}</a>`;
 
     let lng = user.address.geo.lng;
     let lat = user.address.geo.lat;

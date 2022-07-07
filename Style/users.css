@@ -20,8 +20,11 @@ h1.header{
     color: white;
     font-size: 17px;
 }
+a{
+    color: white;
+}
 
-.view-data-button{
+button{
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 20px;

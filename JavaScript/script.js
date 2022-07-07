@@ -1,9 +1,9 @@
-let postsWrapper = document.querySelector('#posts-wrapper');
+let mainWrapper = document.querySelector('#wrapper');
 let userName = '';
 let albumsWrapper = document.querySelector('#user-albums')
 // let usersButton = document.querySelector('')
 
-fetch('https://jsonplaceholder.typicode.com/posts?_limit=4')
+fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
     .then(res => res.json())
     .then(posts => {
 
@@ -53,13 +53,13 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=4')
 
             commentDiv.append(postCommentTitle,postCommentBody,postCommentEmail);
             postDiv.append(postTitle,postParagraph,postAuthor,showCommentsButton,commentDiv);
-            postsWrapper.append(postDiv);
+            mainWrapper.append(postDiv);
 
             fetch('https://jsonplaceholder.typicode.com/users/' + post.userId)
                 .then(res => res.json())
                 .then(user => {
 
-                postAuthor.innerHTML = `Author: <a href="User.html?user_id=${user.id}">${user.name}<br><br></a>`;
+                postAuthor.innerHTML = `Author: <a href="User.html?user_id=${user.id}">${user.name} <br><br></a>`;
                 
             })
 
@@ -70,7 +70,7 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=4')
                     comments.map(comment => {
                         
                         postCommentTitle.textContent = `Title: ${comment.name}`;
-                        postCommentEmail.innerHTML = `<strong>Email:</strong> ${comment.email}`;
+                        postCommentEmail.textContent = `Email: ${comment.email}`;
                         postCommentBody.innerHTML = `<strong>Comment</strong>: <br><br> ${comment.body}`;
                         
                     })
@@ -81,7 +81,7 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=4')
 
     })
 
-    fetch('https://jsonplaceholder.typicode.com/albums?_limit=4')
+    fetch('https://jsonplaceholder.typicode.com/albums?_limit=18')
     .then(res => res.json())
     .then(albums => {
   
@@ -107,52 +107,5 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=4')
   
   
     })
-
-
-let mainWrapper = document.getElementById("users-wrapper");
-
-
-fetch("https://jsonplaceholder.typicode.com/users?_limit=5")
-  .then((res) => res.json())
-  .then((users) => {
-    users.map((user) => {
-
-      fetch('https://jsonplaceholder.typicode.com/posts?userId=' + user.id)
-      .then(res => res.json())
-      .then(posts => {
-
-        let userItem = document.createElement("div");
-        userItem.classList.add("user-wrap-home");
-        mainWrapper.append(userItem);
-    
-        let userImage = document.createElement('img')
-        userImage.src = 'https://www.prajwaldesai.com/wp-content/uploads/2021/02/Find-Users-Last-Logon-Time-using-4-Easy-Methods.jpg';
-        userImage.style.height = `100px`;
-        
-        let userName = document.createElement("h3");
-        userName.classList.add("user-name");
-        userName.innerHTML = `${user.name}`;
-
-
-        let showDataLink = document.createElement('a')
-        showDataLink.href = `http://127.0.0.1:5500/User.html?user_id=${user.id}`;
-        showDataLink.target = `_blank`;
-        let showDataButton = document.createElement('button');
-        showDataButton.classList.add('view-data-button')
-        showDataButton.textContent = `View data`;
-        showDataLink.append(showDataButton)
-  
-        userItem.append(userImage,userName,showDataLink);
-
-        })
-  
-
-
-      });
-
-      
-
-    });
-  
 
 

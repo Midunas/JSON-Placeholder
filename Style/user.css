@@ -33,7 +33,7 @@ a{
 .read-more{
     color: black;
 }
-.view-data-button{
+button{
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 20px;

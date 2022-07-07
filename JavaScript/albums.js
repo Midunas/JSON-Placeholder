@@ -35,7 +35,7 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=30`)
                                  let albumTitle = document.createElement('h4');
                                  albumTitle.innerHTML = `${album.title}`;
 
-                                albumItem.append(photoImage,albumTitle,userTitle);
+                                albumItem.append(photoImage,albumTitle,userTitle,photoCount);
                                 albumWrapper.append(albumItem);
 
                              })

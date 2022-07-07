@@ -81,7 +81,7 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
 
     })
 
-    fetch('https://jsonplaceholder.typicode.com/albums?_limit=20')
+    fetch('https://jsonplaceholder.typicode.com/albums?_limit=18')
     .then(res => res.json())
     .then(albums => {
   
@@ -96,7 +96,7 @@ fetch('https://jsonplaceholder.typicode.com/posts?_limit=6')
             fetch(`https://jsonplaceholder.typicode.com/albums/${album.id}/photos?_limit=1`)
               .then(res => res.json())
               .then(photos => {
-                albumItem.innerHTML = `<h3><a href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${album.title}</a></h3>
+                albumItem.innerHTML = `<h4><a href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${album.title}</a></h4>
                                        <div>Album created by: ${user.name}</div> <br>
                                        <img src="${photos[0].thumbnailUrl}">`;
               })

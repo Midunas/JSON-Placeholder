@@ -35,6 +35,9 @@ body{
 .album-item{
     width: 30%;
 }
+.album-item h3 a{
+    width: 20px;
+}
 #search{
 float: right;
 padding: 8px;

@@ -118,7 +118,8 @@ fetch('https://jsonplaceholder.typicode.com/posts?userId=' + userId)
             let postCommentEmail = document.createElement('p');
             
             let showCommentsButton= document.createElement('button');
-            showCommentsButton.textContent = `Show comments`;
+            showCommentsButton.classList.add('comments-button');
+            showCommentsButton.textContent = `View comments`;
 
             showCommentsButton.onclick = function () {
                 if (commentDiv.style.display == "none") {
@@ -126,7 +127,7 @@ fetch('https://jsonplaceholder.typicode.com/posts?userId=' + userId)
                     showCommentsButton.textContent = `Hide comments`;
                 } else {
                   commentDiv.style.display = "none";
-                  showCommentsButton.textContent = `Show comments`;
+                  showCommentsButton.textContent = `View comments`;
                 }
             }
 

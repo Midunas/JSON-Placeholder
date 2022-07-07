@@ -29,7 +29,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/' + postId)
             let otherPosts = document.createElement('a'); 
 
             // Čia paduodi informacija pages puslapiui 
-            
+
             otherPosts.setAttribute('href', `./posts.html?user_id=${post.userId}`)
             otherPosts.innerHTML = `Other posts <br> <br>`;
 
@@ -43,7 +43,8 @@ fetch('https://jsonplaceholder.typicode.com/posts/' + postId)
             let postCommentEmail = document.createElement('p');
             
             let showCommentsButton= document.createElement('button');
-            showCommentsButton.textContent = `Show comments`;
+            showCommentsButton.classList.add('comments-button');
+            showCommentsButton.textContent = `View comments`;
 
             showCommentsButton.onclick = function () {
                 if (commentDiv.style.display == "none") {
@@ -51,7 +52,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/' + postId)
                     showCommentsButton.textContent = `Hide comments`;
                 } else {
                   commentDiv.style.display = "none";
-                  showCommentsButton.textContent = `Show comments`;
+                  showCommentsButton.textContent = `View comments`;
                 }
             }
 

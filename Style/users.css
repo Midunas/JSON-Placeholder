@@ -1,5 +1,4 @@
 body{
-    max-width: 1240px;
     margin: auto;
     background: #f2f2f2;
 }
@@ -11,6 +10,7 @@ h1.header{
     width: 1040px;
     display: flex;
     flex-wrap: wrap;
+    margin-top: 100px;
 }
 .user-wrap{
     width: 30%;
@@ -19,11 +19,6 @@ h1.header{
     background-color: #3f71bd;
     color: white;
     font-size: 17px;
-}
-.header{
-    margin: auto;
-    text-align: center;
-    margin-top: 100px;
 }
 a{
     color: white;

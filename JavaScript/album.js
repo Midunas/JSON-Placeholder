@@ -1,43 +1,45 @@
-let userId = '';
-let userName ='';
-let albumWrapper = document.getElementById('album-wrapper');
 
-fetch('https://jsonplaceholder.typicode.com/albums')
+let queryParams = document.location.search;
+let urlParams = new URLSearchParams(queryParams);
+let albumId = urlParams.get('album_id');
+let albumTitle = urlParams.get('album_title');
+let userId = urlParams.get('user_id');
+let userName = urlParams.get('user_name');
+
+
+fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos?_limit=10`)
     .then(res => res.json())
-    .then(albums => {
+    .then(photos => {
 
-        albums.map(album => {
+        let albumWrapper = document.getElementById('album-wrapper');
 
-           userId = album.userId;
-
-        fetch('https://jsonplaceholder.typicode.com/users/' + userId)
-        .then(res => res.json())
-        .then(user => {
-
-             userName = user.name;
-             let userNameItem = document.createElement('a');
-             userNameItem.href = `http://127.0.0.1:5500/User.html?user_id=${user.id}` 
-             userNameItem.textContent = userName;
+        if(photos.length > 0) {
 
 
-             let albumTitleList = document.createElement('ul');
-             let albumTitle = document.createElement('li');
-             albumTitle.innerHTML = album.title;
-             albumTitleList.append(albumTitle,userNameItem);
-     
-     
-     
-             albumWrapper.append(albumTitleList);
 
+        let albumTitleElement = document.createElement('h1');
+        albumTitleElement.classList.add('album-title');
+        albumTitleElement.textContent = albumTitle;
+
+        let albumAuthorElement = document.createElement('span');
+        albumAuthorElement.classList.add(`album-author`);
+        albumAuthorElement.innerHTML = `<strong>Album author: </strong> <a href="./User.html?user_id=${userId }"</a> ${userName}<br><br><br>`
+
+        let albumPhotos = document.createElement('div');
+        albumPhotos.classList.add('album-photos');
+
+        albumWrapper.append(albumTitleElement,albumAuthorElement,albumPhotos);
+
+        photos.map(photo => {
+            
+            let imageElement = document.createElement('img');
+            imageElement.classList.add('single-photos')
+            imageElement.src = photo.thumbnailUrl;
+            imageElement.setAttribute('alt', photo.title);
+
+            albumPhotos.prepend(imageElement);
         })
-
-        })
-
-
+    } else {
+        albumWrapper.innerHTML = `<h1> Nothing to be found :( </h1>`
+    }
     })
-
-    fetch('https://jsonplaceholder.typicode.com/photos?_limit=10')
-        .then(res => res.json())
-        .then(photos => {
-            console.log(photos);
-        })

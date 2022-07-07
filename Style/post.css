@@ -1,5 +1,4 @@
 body{
-    max-width: 1240px;
     margin: auto;
     background: #f2f2f2;
 }
@@ -12,11 +11,19 @@ body{
     background-color: white;
     margin: 20px;
     padding: 20px;
-    border: 2px solid black;
+    border: 1px solid black;
 }
 .header{
     display: flex;
     justify-content: space-between;
     position: sticky;
     top: 0;
+}
+.comments-button{
+    border: 0px;
+    background-color: white;
+    color: gray;
+}
+.comments-button:hover{
+    border-bottom: 1px solid gray;
 }

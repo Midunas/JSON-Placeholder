@@ -40,3 +40,13 @@ ul {
     margin-top: 15px;
     margin-left: -560px; 
 }
+#search {
+  float: right;
+  padding: 8px;
+  border: none;
+  border-radius: 2px;
+  opacity: 90%;
+  margin-top: 8px;
+  margin-right: 16px;
+  font-size: 14px;
+  }

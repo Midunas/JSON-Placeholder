@@ -6,7 +6,7 @@ console.log(userId);
 let mainWrapper = document.querySelector('#wrapper');
 let userName = '';
 
-if(userId !== null){
+if( userId !== null){
 fetch('https://jsonplaceholder.typicode.com/posts?userId=' + userId)
     .then(res => res.json())
     .then(posts => {

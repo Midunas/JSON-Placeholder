@@ -135,7 +135,7 @@ fetch("https://jsonplaceholder.typicode.com/users?_limit=5")
 
 
         let showDataLink = document.createElement('a')
-        showDataLink.href = `http://127.0.0.1:5500/User.html?user_id=${user.id}`;
+        showDataLink.href = `./User.html?user_id=${user.id}`;
         showDataLink.target = `_blank`;
         let showDataButton = document.createElement('button');
         showDataButton.classList.add('view-data-button')

@@ -23,12 +23,15 @@ fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos?_limit=10`)
 
         let albumAuthorElement = document.createElement('span');
         albumAuthorElement.classList.add(`album-author`);
-        albumAuthorElement.innerHTML = `<strong>Album author: </strong> <a href="./User.html?user_id=${userId }"</a> ${userName}<br><br><br>`
+        albumAuthorElement.innerHTML = `<strong>Album author: </strong> <a href="./User.html?user_id=${userId}"</a> ${userName}<br><br><br>`
 
+        let otherAlbums = document.createElement('span');
+        otherAlbums.classList.add('album-author');
+        otherAlbums.innerHTML = `<a href="./albums.html?user_id=${userId}"</a>Other albums<br><br><br>`;
         let albumPhotos = document.createElement('div');
         albumPhotos.classList.add('album-photos');
 
-        albumWrapper.append(albumTitleElement,albumAuthorElement,albumPhotos);
+        albumWrapper.append(albumTitleElement,albumAuthorElement,otherAlbums,albumPhotos);
 
         photos.map(photo => {
             

@@ -1,7 +1,10 @@
 let postsWrapper = document.querySelector('#posts-wrapper');
 let userName = '';
-let albumsWrapper = document.querySelector('#user-albums')
+let albumsWrapper = document.querySelector('#user-albums');
 // let usersButton = document.querySelector('')
+let searchInput = document.querySelector('#search').value;
+console.log(searchInput)
+
 
 fetch('https://jsonplaceholder.typicode.com/posts?_limit=4')
     .then(res => res.json())

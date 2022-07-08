@@ -40,7 +40,7 @@ ul {
     margin-top: 15px;
     margin-left: -560px; 
 }
-#search {
+#search, #search-2 {
   float: right;
   padding: 8px;
   border: none;

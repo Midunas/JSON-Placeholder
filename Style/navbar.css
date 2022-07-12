@@ -18,6 +18,9 @@ ul {
   li a:hover {
     background-color: #111;
   }
+  .active {
+    background-color: #111;
+  }
   .logo-image{
     height: 100%;
     width: 120px;
@@ -40,7 +43,7 @@ ul {
     margin-top: 15px;
     margin-left: -560px; 
 }
-#search, #search-2 {
+#search, #search-button {
   float: right;
   padding: 8px;
   border: none;
@@ -50,3 +53,6 @@ ul {
   margin-right: 16px;
   font-size: 14px;
   }
+.list-flex{
+  display: flex;
+}

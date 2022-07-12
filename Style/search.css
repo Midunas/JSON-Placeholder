@@ -1,0 +1,9 @@
+.search-result{
+    margin-top: 100px;
+    background: none;
+    color: black;
+}
+.result-link{
+    display: block;
+    color: black;
+}

@@ -31,20 +31,6 @@ logo.classList.add('logo-image');
 let navList = document.createElement('ul');
 navList.classList.add('list-flex');
 
-let searchForm = document.createElement('form')
-searchForm.action = `./search.html`
-let searchInput = document.createElement('input');
-searchInput.setAttribute('type', 'text');
-searchInput.setAttribute('name', 'search-input');
-searchInput.setAttribute('id', 'search');
-
-let searchSubmit = document.createElement('button');
-searchSubmit.textContent = `Search`;
-searchSubmit.setAttribute('type', 'submit');
-searchSubmit.setAttribute('id', 'search-button');
-
-searchForm.append(searchSubmit, searchInput);
-
 navigationItems.map(navItem => {
 
     let navItemElement = document.createElement('li');
@@ -57,9 +43,29 @@ navigationItems.map(navItem => {
 }
 
     navItemElement.append(navItemLink);
-    navList.append(navItemElement, searchForm);
+    navList.append(navItemElement);
 })
 
 
-header.append(logo, navList)
+header.append(logo, navList);
+
+if(!pathname.includes('search.html')) {
+
+    let searchForm = document.createElement('form')
+    searchForm.action = `./search.html`
+    let searchInput = document.createElement('input');
+    searchInput.setAttribute('type', 'text');
+    searchInput.setAttribute('name', 'search-input');
+    searchInput.setAttribute('id', 'search');
+    
+    let searchSubmit = document.createElement('button');
+    searchSubmit.textContent = `Search`;
+    searchSubmit.setAttribute('type', 'submit');
+    searchSubmit.setAttribute('id', 'search-button');
+    
+    searchForm.append(searchSubmit, searchInput);
+    navList.append(searchForm)
+};
+
+
 document.body.prepend(header);

@@ -6,14 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Search Page</title>
     <script src="./JavaScript/header.js" defer></script>
-    <script src="./JavaScript/script.js" defer></script>
     <script src="./JavaScript/search.js" defer></script>
     <link rel="stylesheet" href="./Style/style.css" />
     <link rel="stylesheet" href="./Style/navbar.css" />
     <link rel="stylesheet" href="./Style/users.css" />
+    <link rel="stylesheet" href="./Style/search.css" />
   </head>
   <body>
-    <div class="search-wrap"></div>
+    <form id="search-page-form">
+      <input type="text" name="search-input" id="search-input-text" />
+      <input type="submit" value="Search" />
+    </form>
+    <div id="search-results-form"></div>
     <div class="user-cards"></div>
   </body>
 </html>

@@ -1,9 +1,42 @@
+
+#wrapper{
+    display: block;
+}
 .search-result{
-    margin-top: 100px;
-    background: none;
-    color: black;
+    display: flex;
+    flex-direction: column;
 }
 .result-link{
     display: block;
     color: black;
+}
+#search-page-form {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#search-input-text {
+    width: 500px;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 100px;
+    border: 0.5px solid gray;
+}
+#search-input-button {
+    background: transparent;
+    height: 50px;
+    width: 50px;
+    border: none;
+    outline: none;
+    margin-left: -55px;
+}
+#search-input-button img {
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+  }
+h3 {
+    text-align: center;
 }

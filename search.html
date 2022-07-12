@@ -13,11 +13,20 @@
     <link rel="stylesheet" href="./Style/search.css" />
   </head>
   <body>
-    <form id="search-page-form">
-      <input type="text" name="search-input" id="search-input-text" />
-      <input type="submit" value="Search" />
-    </form>
-    <div id="search-results-form"></div>
-    <div class="user-cards"></div>
+    <div id="wrapper">
+      <form id="search-page-form">
+        <input
+          type="text"
+          name="search-input"
+          id="search-input-text"
+          placeholder="Type to search..."
+        />
+        <button type="submit" value="Search" id="search-input-button">
+          <img src="./images/searchButton.png" />
+        </button>
+      </form>
+      <div id="search-results-form"></div>
+      <div class="user-cards"></div>
+    </div>
   </body>
 </html>

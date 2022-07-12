@@ -181,7 +181,7 @@ searchPageForm.addEventListener("submit", (event) => {
       }
     });
 
-  fetch(`https://jsonplaceholder.typicode.com/albums?title=${searchInput}`)
+  fetch(`https://jsonplaceholder.typicode.com/albums?title_like=${searchInput}`)
     .then((res) => res.json())
     .then((albums) => {
       if (albums.length > 0) {
@@ -198,3 +198,6 @@ searchPageForm.addEventListener("submit", (event) => {
       }
     });
 });
+
+
+// .search-input : focus-visible { outline : none ; }

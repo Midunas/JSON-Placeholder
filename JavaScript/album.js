@@ -6,7 +6,7 @@ let albumTitle = urlParams.get('album_title');
 let userId = urlParams.get('user_id');
 let userName = urlParams.get('user_name');
 
-
+function renderAlbum () {
 fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos?_limit=10`)
     .then(res => res.json())
     .then(photos => {
@@ -46,3 +46,5 @@ fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos?_limit=10`)
         albumWrapper.innerHTML = `<h1> Nothing to be found :( </h1>`
     }
     })
+}
+renderAlbum();

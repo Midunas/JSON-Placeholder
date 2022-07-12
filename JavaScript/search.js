@@ -17,15 +17,15 @@ albumsList.before(albumsListTitle);
 
 function init () {
   innerPageSearchForm ()
-  outsidePageSearchForm()
+  outsidePageSearchForm ()
 }
 
-function outsidePageSearchForm() {
+function outsidePageSearchForm () {
   let queryParams = document.location.search;
   let urlParams = new URLSearchParams(queryParams);
   let searchPhrase = urlParams.get("search-input");
   
-    let namesUrl =`title=${searchPhrase}`;
+    let namesUrl =`=${searchPhrase}`;
     renderAllNames(namesUrl);
 
     let postsUrl = `title=${searchPhrase}`;
@@ -39,7 +39,7 @@ function innerPageSearchForm () {
 
   let searchPageForm = document.querySelector("#search-page-form");
 
-searchPageForm.addEventListener("submit", (event) => {
+  searchPageForm.addEventListener("submit", (event) => {
   event.preventDefault();
 
   usersList.innerHTML = "";
@@ -87,9 +87,7 @@ function renderAllNames(searchText) {
               usersList.append(userItem);
             });
           } else {
-            fetch(
-              `https://jsonplaceholder.typicode.com/users?email${searchText}`
-            )
+            fetch(`https://jsonplaceholder.typicode.com/users?email${searchText}`)
               .then((res) => res.json())
               .then((usersByEmail) => {
                 if (usersByEmail.length > 0) {

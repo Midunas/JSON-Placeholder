@@ -5,7 +5,9 @@ let postId = urlParams.get('post_id');
 let mainWrapper = document.querySelector('#wrapper');
 let userName = '';
 
-fetch('https://jsonplaceholder.typicode.com/posts/' + postId)
+function renderPost () {
+
+    fetch('https://jsonplaceholder.typicode.com/posts/' + postId)
     .then(res => res.json())
     .then(post => {
 
@@ -85,3 +87,7 @@ fetch('https://jsonplaceholder.typicode.com/posts/' + postId)
             })
 
         })
+
+}
+
+renderPost();

@@ -8,7 +8,7 @@ let mainWrapper = document.getElementById("wrapper");
 let postWrap = document.createElement('div');
 postWrap.classList.add('post-wrap');
 
-
+function renderUser () {
 fetch("https://jsonplaceholder.typicode.com/users/"+ userId)
   .then((res) => res.json())
   .then((user) => {
@@ -73,3 +73,5 @@ fetch("https://jsonplaceholder.typicode.com/users/"+ userId)
     })
 
       });
+    }
+  renderUser();

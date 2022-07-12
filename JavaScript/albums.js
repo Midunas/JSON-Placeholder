@@ -4,7 +4,8 @@ let userId = urlParams.get('user_id');
 
 let albumsWrapper = document.getElementById('albums-wrapper');
 
-if (userId) {
+function renderAlbumsByUserId () {
+
 
     fetch(`https://jsonplaceholder.typicode.com/users/${userId}/albums`)
     .then(res => res.json())
@@ -51,8 +52,9 @@ if (userId) {
     })
 })
 
+}
 
-} else {
+function renderAlbums () {
 
     fetch(`https://jsonplaceholder.typicode.com/albums?_limit=30`)
     .then(res => res.json())
@@ -99,5 +101,11 @@ if (userId) {
     })
 })
 
+}
+
+if (userId) {
+    renderAlbumsByUserId();
+} else {
+    renderAlbums();
 }
 

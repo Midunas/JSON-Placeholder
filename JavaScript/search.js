@@ -69,7 +69,7 @@ function renderAllNames(searchText) {
 
       users.map((user) => {
         let userItem = document.createElement("li");
-        userItem.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a>`;
+        userItem.innerHTML = `<a href="./User.html?user_id=${user.id}">${user.name}</a>`;
 
         usersList.append(userItem);
       });
@@ -82,7 +82,7 @@ function renderAllNames(searchText) {
 
             usersByName.map((user) => {
               let userItem = document.createElement("li");
-              userItem.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a>`;
+              userItem.innerHTML = `<a href="./User.html?user_id=${user.id}">${user.name}</a>`;
 
               usersList.append(userItem);
             });
@@ -95,7 +95,7 @@ function renderAllNames(searchText) {
 
                   usersByEmail.map((user) => {
                     let userItem = document.createElement("li");
-                    userItem.innerHTML = `<a href="./user.html?user_id=${user.id}">${user.name}</a>`;
+                    userItem.innerHTML = `<a href="./User.html?user_id=${user.id}">${user.name}</a>`;
 
                     usersList.append(userItem);
                   });

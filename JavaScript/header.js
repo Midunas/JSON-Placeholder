@@ -27,7 +27,6 @@ let logo = document.createElement('img');
 logo.src = './images/lgorandom.JPG';
 logo.classList.add('logo-image');
 
-
 let navList = document.createElement('ul');
 navList.classList.add('list-flex');
 

@@ -1,9 +1,14 @@
+function init () {
+
 let postsWrapper = document.querySelector("#posts-wrapper");
 let userName = "";
-let albumWrapper = document.getElementById("albums-wrapper");
 let userAlbums = document.querySelector("#user-albums");
+let albumWrapper = document.getElementById("albums-wrapper");
 
-fetch("https://jsonplaceholder.typicode.com/posts?_limit=4")
+// let limitUrl = `&_limit=4`;
+// renderPosts(limitUrl);
+
+fetch(`https://jsonplaceholder.typicode.com/posts?_limit=4`)
   .then((res) => res.json())
   .then((posts) => {
     posts.map((post) => {
@@ -75,35 +80,6 @@ fetch("https://jsonplaceholder.typicode.com/posts?_limit=4")
     });
   });
 
-// function renderAlbums () {
-// }
-// fetch('https://jsonplaceholder.typicode.com/albums?_limit=4')
-// .then(res => res.json())
-// .then(albums => {
-
-//   albums.map(album => {
-
-//     let albumItem = document.createElement('div');
-//     albumItem.classList.add('album-item');
-
-//     fetch('https://jsonplaceholder.typicode.com/users/' + album.userId)
-//       .then(res => res.json())
-//       .then(user => {
-
-//         fetch(`https://jsonplaceholder.typicode.com/albums/${album.id}/photos?_limit=1`)
-//           .then(res => res.json())
-//           .then(photos => {
-//             albumItem.innerHTML = `<h4><a href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${album.title}</a></h4>
-//                                    <div>Album created by: ${user.name}</div> <br>
-//                                    <img src="${photos[0].thumbnailUrl}">`;
-//           })
-//       })
-
-//       albumsWrapper.prepend(albumItem);
-//   })
-
-// })
-
 fetch(`https://jsonplaceholder.typicode.com/albums?_limit=4`)
   .then((res) => res.json())
   .then((albums) => {
@@ -139,7 +115,7 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=4`)
 
               albumItem.append(albumTitle, userTitle, photoImage, photoCount);
               userAlbums.append(albumItem);
-              albumWrapper.append(albumWrapper);
+              albumWrapper.append(userAlbums);
             });
         });
     });
@@ -147,43 +123,37 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=4`)
 
 let mainWrapper = document.getElementById("users-wrapper");
 
-// let usersUrl = `?_limit=5`;
-
-// import renderAllUsers from './users.js';
-// renderAllUsers(mainWrapper,url);
-
-function renderUsers(mainWrapper) {
+function renderUsers() {
   fetch("https://jsonplaceholder.typicode.com/users?_limit=5")
     .then((res) => res.json())
     .then((users) => {
       users.map((user) => {
-        fetch("https://jsonplaceholder.typicode.com/posts?userId=" + user.id)
-          .then((res) => res.json())
-          .then((posts) => {
-            let userItem = document.createElement("div");
-            userItem.classList.add("user-wrap-home");
-            mainWrapper.append(userItem);
+        let userItem = document.createElement("div");
+        userItem.classList.add("user-wrap-home");
+        mainWrapper.append(userItem);
 
-            let userImage = document.createElement("img");
-            userImage.src =
-              "https://www.prajwaldesai.com/wp-content/uploads/2021/02/Find-Users-Last-Logon-Time-using-4-Easy-Methods.jpg";
-            userImage.style.height = `100px`;
+        let userImage = document.createElement("img");
+        userImage.src =
+          "https://www.prajwaldesai.com/wp-content/uploads/2021/02/Find-Users-Last-Logon-Time-using-4-Easy-Methods.jpg";
+        userImage.style.height = `100px`;
 
-            let userName = document.createElement("h3");
-            userName.classList.add("user-name");
-            userName.innerHTML = `${user.name}`;
+        let userName = document.createElement("h3");
+        userName.classList.add("user-name");
+        userName.innerHTML = `${user.name}`;
 
-            let showDataLink = document.createElement("a");
-            showDataLink.href = `./User.html?user_id=${user.id}`;
-            showDataLink.target = `_blank`;
-            let showDataButton = document.createElement("button");
-            showDataButton.classList.add("view-data-button");
-            showDataButton.textContent = `View data`;
-            showDataLink.append(showDataButton);
+        let showDataLink = document.createElement("a");
+        showDataLink.href = `./User.html?user_id=${user.id}`;
+        showDataLink.target = `_blank`;
+        let showDataButton = document.createElement("button");
+        showDataButton.classList.add("view-data-button");
+        showDataButton.textContent = `View data`;
+        showDataLink.append(showDataButton);
 
-            userItem.append(userImage, userName, showDataLink);
-          });
+        userItem.append(userImage, userName, showDataLink);
       });
     });
 }
-renderUsers(mainWrapper);
+
+renderUsers();
+}
+init();

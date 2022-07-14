@@ -1,111 +1,61 @@
-let queryParams = document.location.search;
-let urlParams = new URLSearchParams(queryParams);
-let userId = urlParams.get('user_id');
+let albumsWrapper = document.getElementById("albums-wrapper");
 
-let albumsWrapper = document.getElementById('albums-wrapper');
+function init () {
+    let queryParams = document.location.search;
+    let urlParams = new URLSearchParams(queryParams);
+    let userId = urlParams.get("user_id");
 
-function renderAlbumsByUserId () {
+function renderAlbumsByUserId(id) {
+  fetch(`https://jsonplaceholder.typicode.com/users/${id}/albums?_embed=photos&_expand=user`)
+    .then((res) => res.json())
+    .then((albums) => {
 
+      albums.map((singleAlbum) => {
+                renderSingleAlbum(singleAlbum);
 
-    fetch(`https://jsonplaceholder.typicode.com/users/${userId}/albums`)
-    .then(res => res.json())
-    .then(albums => {
+              });
+          });
+};
 
-        albums.map(album => {
-
-            let userId = album.userId;
-
-
-            fetch('https://jsonplaceholder.typicode.com/users/'+ userId)
-                .then(res => res.json())
-                .then(user => {
-
-
-                    fetch(`https://jsonplaceholder.typicode.com/albums/${userId}/photos?_limit=40`)
-                        .then(res => res.json())
-                        .then(photos => {
-
-                            let randomIndex = Math.floor(Math.random() * photos.length);
-
-                                 let albumItem = document.createElement('div');
-                                 albumItem.classList.add('album-item')
-
-                                 let photoImage = document.createElement('img');
-                                 photoImage.src = photos[randomIndex].thumbnailUrl;
-
-                                 let photoCount = document.createElement('p');
-                                 photoCount.innerHTML = `(${photos.length} Photos)`;
-
-                                 let userTitle = document.createElement('h4')
-                                 userTitle.innerHTML = `By: <br><br> <a href="./user.html?user_id=${user.id}">${user.name}</a>`;
-
-                                 let albumTitle = document.createElement('h4');
-                                 albumTitle.innerHTML = `<a href="./album.html?album_id=${album.id}&album_title${album.title}&user_id${album.userId}&user_name=${user.name}">${album.title}</a>`;
-
-                                albumItem.append(photoImage,albumTitle,userTitle,photoCount);
-                                albumsWrapper.append(albumItem);
-                        })
-
-
-        })
-
-    })
-})
-
-}
-
-function renderAlbums () {
-
-    fetch(`https://jsonplaceholder.typicode.com/albums?_limit=30`)
-    .then(res => res.json())
-    .then(albums => {
-
-        albums.map(album => {
-
-            let userId = album.userId;
-
-
-            fetch('https://jsonplaceholder.typicode.com/users/'+ userId)
-                .then(res => res.json())
-                .then(user => {
-
-
-                    fetch(`https://jsonplaceholder.typicode.com/albums/${userId}/photos?_limit=40`)
-                        .then(res => res.json())
-                        .then(photos => {
-
-                            let randomIndex = Math.floor(Math.random() * photos.length);
-
-                                 let albumItem = document.createElement('div');
-                                 albumItem.classList.add('album-item')
-
-                                 let photoImage = document.createElement('img');
-                                 photoImage.src = photos[randomIndex].thumbnailUrl;
-
-                                 let photoCount = document.createElement('p');
-                                 photoCount.innerHTML = `(${photos.length} Photos)`;
-
-                                 let userTitle = document.createElement('h4')
-                                 userTitle.innerHTML = `By: <br><br> <a href="./user.html?user_id=${user.id}">${user.name}</a>`;
-
-                                 let albumTitle = document.createElement('h4');
-                                 albumTitle.innerHTML = `<a href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${album.title}</a>`;
-
-                                albumItem.append(photoImage,albumTitle,userTitle,photoCount);
-                                albumsWrapper.append(albumItem);
-                        })
-
-
-        })
-
-    })
-})
-
-}
+function renderAlbums() {
+  fetch(`https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos&_limit=30`)
+    .then((res) => res.json())
+    .then((albums) => {
+      albums.map((singleAlbum) => {
+        renderSingleAlbum(singleAlbum)
+              });
+          });
+};
 
 if (userId) {
-    renderAlbumsByUserId();
+  renderAlbumsByUserId(userId);
 } else {
-    renderAlbums();
+  renderAlbums();
 }
 
+function renderSingleAlbum (album) {
+
+        let randomIndex = Math.floor(Math.random() * album.photos.length);
+
+        let albumItem = document.createElement("div");
+        albumItem.classList.add("album-item");
+
+        let photoImage = document.createElement("img");
+        photoImage.src = album.photos[randomIndex].thumbnailUrl;
+
+        let photoCount = document.createElement("p");
+        photoCount.innerHTML = `(${album.photos.length} Photos)`;
+
+        let userTitle = document.createElement("h4");
+        userTitle.innerHTML = `By: <br><br> <a href="./user.html?user_id=${album.user.id}">${album.user.name}</a>`;
+
+        let albumTitle = document.createElement("h4");
+        albumTitle.innerHTML = `<a href="./album.html?album_id=${album.id}&album_title${album.title}&user_id${album.userId}&user_name=${album.user.name}">${album.title}</a>`;
+
+        albumItem.append(photoImage, albumTitle, userTitle, photoCount);
+        albumsWrapper.append(albumItem);
+      
+}
+
+}
+init () 

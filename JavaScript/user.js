@@ -2,8 +2,6 @@ let queryParams = document.location.search;
 let urlParams = new URLSearchParams(queryParams);
 let userId = urlParams.get('user_id');
 
-console.log(userId);
-
 let mainWrapper = document.getElementById("wrapper");
 let postWrap = document.createElement('div');
 postWrap.classList.add('post-wrap');

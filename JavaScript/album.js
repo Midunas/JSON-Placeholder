@@ -15,8 +15,6 @@ fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos?_limit=10`)
 
         if(photos.length > 0) {
 
-
-
         let albumTitleElement = document.createElement('h1');
         albumTitleElement.classList.add('album-title');
         albumTitleElement.textContent = albumTitle;

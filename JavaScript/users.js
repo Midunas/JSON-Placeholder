@@ -1,19 +1,12 @@
-
-  let queryParams = document.location.search;
-  let urlParams = new URLSearchParams(queryParams);
-  let userId = urlParams.get("user_id");
-
-  let mainWrapper = document.getElementById("wrapper");
-
 // export default function renderAllUsers (mainWrapper) {
-function renderAllUsers (mainWrapper) {
-  fetch(`https://jsonplaceholder.typicode.com/users`)
+function renderAllUsers () {
+  
+  fetch(`https://jsonplaceholder.typicode.com/users?_embed=posts`)
     .then((res) => res.json())
     .then((users) => {
       users.map((user) => {
-        fetch("https://jsonplaceholder.typicode.com/posts?userId=" + user.id)
-          .then((res) => res.json())
-          .then((posts) => {
+    
+        let mainWrapper = document.getElementById("wrapper");
             let userItem = document.createElement("div");
             userItem.classList.add("user-wrap");
             mainWrapper.append(userItem);
@@ -28,7 +21,7 @@ function renderAllUsers (mainWrapper) {
 
             let postsCount = document.createElement("span");
             postsCount.classList.add(`post-count`);
-            postsCount.innerHTML = `Posts count: ${posts.length} <br><br>`;
+            postsCount.innerHTML = `Posts count: ${user.posts.length} <br><br>`;
 
             let showDataLink = document.createElement("a");
             showDataLink.href = `./User.html?user_id=${user.id}`;
@@ -41,12 +34,5 @@ function renderAllUsers (mainWrapper) {
             userItem.append(userImage, userName, postsCount, showDataLink);
           });
       });
-    });
-}
-
-renderAllUsers(mainWrapper);
-
-
-
-
-
+};
+renderAllUsers();

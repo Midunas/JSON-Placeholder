@@ -6,8 +6,8 @@ let albumTitle = urlParams.get('album_title');
 let userId = urlParams.get('user_id');
 let userName = urlParams.get('user_name');
 
-renderPhotosSwiper();
-function renderPhotosSwiper() {
+renderSwiper();
+function renderSwiper() {
   let albumWrapper = document.querySelector("#album-wrapper");
   let swiperWrapper = document.querySelector(".swiper-wrapper");
 

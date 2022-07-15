@@ -31,7 +31,7 @@ ul {
     position: sticky;
     top: 0;
     background-color: white;
-    z-index: 1;
+    z-index: 9999;
 }
 .page-name{
     font-size: large;

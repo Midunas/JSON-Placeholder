@@ -35,13 +35,11 @@ if (userId) {
 
 function renderSingleAlbum (album) {
 
-        let randomIndex = Math.floor(Math.random() * album.photos.length);
-
         let albumItem = document.createElement("div");
         albumItem.classList.add("album-item");
 
         let photoImage = document.createElement("img");
-        photoImage.src = album.photos[randomIndex].thumbnailUrl;
+        photoImage.src = `https://picsum.photos/id/${getRandomInt(27)}/250`;
 
         let photoCount = document.createElement("p");
         photoCount.innerHTML = `(${album.photos.length} Photos)`;
@@ -50,7 +48,7 @@ function renderSingleAlbum (album) {
         userTitle.innerHTML = `By: <br><br> <a href="./user.html?user_id=${album.user.id}">${album.user.name}</a>`;
 
         let albumTitle = document.createElement("h4");
-        albumTitle.innerHTML = `<a href="./album.html?album_id=${album.id}&album_title${album.title}&user_id${album.userId}&user_name=${album.user.name}">${album.title}</a>`;
+        albumTitle.innerHTML = `<a href="./album.html?album_id=${album.id}&album_title${album.title}&user_id${album.userId}&user_name=${album.user.name}">${firstLetterUpperCase(album.title)}</a>`;
 
         albumItem.append(photoImage, albumTitle, userTitle, photoCount);
         albumsWrapper.append(albumItem);

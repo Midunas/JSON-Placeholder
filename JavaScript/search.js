@@ -117,7 +117,7 @@ function renderAllPosts(searchText) {
         postsListTitle.textContent = "Posts:";
         posts.map((post) => {
           let postData = {
-            content: post.title,
+            content: firstLetterUpperCase(post.title),
             href: `./post.html?post_id=${post.id}`,
             parentElement: postsList,
           };
@@ -139,7 +139,7 @@ function renderAllAlbums(searchText) {
       if (albums.length > 0) {
         albums.map((album) => {
           let albumData = {
-            content: album.title,
+            content: firstLetterUpperCase(album.title),
             href: `./album.html?album_id=${album.id}`,
             parentElement: albumsList,
           };

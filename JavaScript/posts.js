@@ -38,10 +38,6 @@ function renderPostsByUserId(id) {
         let commentDiv = document.createElement("div");
         commentDiv.classList.add("comment-div");
         commentDiv.style.display = "none";
-        let postCommentTitle = document.createElement("h4");
-        let postCommentBody = document.createElement("p");
-        postCommentBody.classList.add("post-comment");
-        let postCommentEmail = document.createElement("p");
 
         let showCommentsButton = document.createElement("button");
         showCommentsButton.classList.add("comments-button");
@@ -73,9 +69,7 @@ function renderPostsByUserId(id) {
           .then((res) => res.json())
           .then((comments) => {
             comments.map((comment) => {
-              postCommentTitle.textContent = `Title: ${comment.name}`;
-              postCommentEmail.textContent = `Email: ${comment.email}`;
-              postCommentBody.innerHTML = `<strong>Comment</strong>: <br><br> ${comment.body}`;
+              renderComment(comment,commentDiv);
             });
           });
       });

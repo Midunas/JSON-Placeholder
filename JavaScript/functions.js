@@ -13,10 +13,10 @@
       .then((posts) => {
         posts.map(post => {
   
-  
           let paragraph = post.body;
+          let updatedTitleP = firstLetterUpperCase(post.body);
   
-          let updatedTitle = post.title[0].toUpperCase() + post.title.slice(1);
+          let updatedTitle = firstLetterUpperCase(post.title);
   
           let postDiv = document.createElement("div");
           postDiv.classList.add("post-wrap");
@@ -27,17 +27,13 @@
   
           let postParagraph = document.createElement("p");
           postParagraph.classList.add("post-content");
-          postParagraph.textContent = paragraph;
+          postParagraph.textContent = updatedTitleP;
   
           let postAuthor = document.createElement("a");
   
           let commentDiv = document.createElement("div");
           commentDiv.classList.add("comment-div");
           commentDiv.style.display = "none";
-          let postCommentTitle = document.createElement("h4");
-          let postCommentBody = document.createElement("p");
-          postCommentBody.classList.add("post-comment");
-          let postCommentEmail = document.createElement("p");
   
           let showCommentsButton = document.createElement("button");
           showCommentsButton.classList.add("comments-button");
@@ -53,8 +49,6 @@
             }
   
           };
-  
-          commentDiv.append(postCommentTitle, postCommentBody, postCommentEmail);
           postDiv.append(
             postTitle,
             postParagraph,
@@ -70,11 +64,28 @@
             .then((res) => res.json())
             .then((comments) => {
               comments.map((comment) => {
-                postCommentTitle.textContent = `Title: ${comment.name}`;
-                postCommentEmail.textContent = `Email: ${comment.email}`;
-                postCommentBody.innerHTML = `<strong>Comment</strong>: <br><br> ${comment.body}`;
+                renderComment(comment,commentDiv);
             });
         });
       });
       });
   }
+  function renderComment (comment,commentDiv) {
+
+    let postCommentTitle = document.createElement("h4");
+    let postCommentBody = document.createElement("p");
+    postCommentBody.classList.add("post-comment");
+    let postCommentEmail = document.createElement("p");
+    postCommentTitle.textContent = `Title: ${firstLetterUpperCase(comment.name)}`;
+    postCommentEmail.innerHTML = `<strong>Email:</strong> ${comment.email}`;
+    postCommentBody.innerHTML = `<strong>Comment</strong>: <br><br> ${firstLetterUpperCase(comment.body)}`;
+
+    commentDiv.append(postCommentTitle, postCommentBody, postCommentEmail)
+  }
+
+function firstLetterUpperCase(str) {
+  return str[0].toUpperCase() + str.slice(1);
+}
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}

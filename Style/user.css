@@ -46,7 +46,9 @@ a{
     height: 200px;
     display: flex;
     flex-direction: column;
-    border: 2px solid black;
+    border: 1px solid black;
+    border-radius: 8px;
+    background-color: white;
     margin-bottom: 25px;
     padding: 10px;
 }

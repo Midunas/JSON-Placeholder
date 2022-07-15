@@ -60,8 +60,8 @@ fetch("https://jsonplaceholder.typicode.com/users/"+ userId)
         let postItem = document.createElement('div');
         postItem.classList.add('post-item');
 
-        postItem.innerHTML = `<h4> ${post.title}</h4>
-                              <p>${post.body}</p>
+        postItem.innerHTML = `<h4> ${firstLetterUpperCase(post.title)}</h4>
+                              <p>${firstLetterUpperCase(post.body)}</p>
                               <a class="read-more" href="./post.html?post_id=${post.id}">Read More</a>`;
 
         postItem.append(postTitle);

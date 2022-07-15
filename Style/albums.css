@@ -6,7 +6,10 @@ body{
     width: 1020px;
     margin: auto;
     padding-top: 100px;
-    
+}
+.title{
+    text-decoration: none;
+    color: rgb(85, 49, 6);
 }
 .swiper-container {
         width: 1020px;

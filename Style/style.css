@@ -75,3 +75,7 @@ h2{
     color: white;
     font-size: 17px;
 }
+.title{
+    text-decoration: none;
+    color: rgb(85, 49, 6);
+}

@@ -34,10 +34,10 @@ fetch(`https://jsonplaceholder.typicode.com/albums?_limit=4`)
               photoCount.innerHTML = `(${photos.length} Photos)`;
 
               let userTitle = document.createElement("h4");
-              userTitle.innerHTML = `By: <br><br> <a href="./user.html?user_id=${user.id}">${user.name}</a>`;
+              userTitle.innerHTML = `By: <br> <a class="title" href="./user.html?user_id=${user.id}">${user.name}</a>`;
 
               let albumTitle = document.createElement("h4");
-              albumTitle.innerHTML = `<a href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${firstLetterUpperCase(album.title)}</a>`;
+              albumTitle.innerHTML = `<a class="title" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${firstLetterUpperCase(album.title)}</a>`;
 
               albumItem.append(photoImage,albumTitle, userTitle, photoCount);
               userAlbums.append(albumItem);

@@ -43,10 +43,10 @@ function renderSwiper() {
       let albumPhoto = document.createElement("div");
       albumPhoto.classList.add("swiper-slide");
 
-      let imageEl = document.createElement("img");
-      imageEl.setAttribute("src", `https://picsum.photos/id/${getRandomInt(27)}/200/300`);
-      imageEl.setAttribute("alt", photo.title);
-      albumPhoto.append(imageEl);
+      let image = document.createElement("img");
+      image.setAttribute("src", `https://picsum.photos/id/${getRandomInt(27)}/200/300`);
+      image.setAttribute("alt", photo.title);
+      albumPhoto.append(image);
       swiperWrapper.prepend(albumPhoto);
     });
 });

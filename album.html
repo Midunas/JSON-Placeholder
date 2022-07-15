@@ -7,6 +7,7 @@
     <title>Album</title>
     <script src="./JavaScript/header.js" defer></script>
     <script src="./JavaScript/album.js" defer></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="./Style/albums.css" />
     <link rel="stylesheet" href="./Style/navbar.css" />
     <link
@@ -15,9 +16,21 @@
     />
   </head>
   <body>
-    <div id="album-wrapper">
+    <!-- <div id="album-wrapper">
       <h1>Album:</h1>
+    </div> -->
+    <div class="container" id="album-wrapper">
+      <h2 class="page-title">Album</h2>
+    </div>
+
+    <div class="swiper-container">
+      <div class="swiper-wrapper grid-container">
+        <!-- <div class="swiper-slide">Slide 1</div> -->
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
     </div>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="./JavaScript/swiper.js"></script>
   </body>
 </html>

@@ -58,8 +58,8 @@ function renderPhotosSwiper() {
 
       if (photos.length) {
         let albumTitleElement = document.createElement("span");
-        albumTitleElement .classList.add("title");
-        albumTitleElement .textContent = albumTitle;
+        albumTitleElement.classList.add("album-title")
+        albumTitleElement.innerHTML = `${albumTitle} <br> <br>`;
 
         let albumAuthor = document.createElement("span");
         albumAuthor.classList.add("album-author");

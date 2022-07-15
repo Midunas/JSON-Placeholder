@@ -12,6 +12,10 @@ body{
         margin: auto;
         padding-top: 100px;
 }
+.album-title{
+    color: rgb(51, 42, 31);
+    font-size: 20px;
+}
 #albums-wrapper{
     width: 1020px;
     margin: auto;

@@ -1,5 +1,5 @@
 import {getRandomInt, firstLetterUpperCase} from './functions.js';
-
+import headerView from './header.js';
 function init () {
 let queryParams = document.location.search;
 let urlParams = new URLSearchParams(queryParams);
@@ -7,6 +7,8 @@ let albumId = urlParams.get("album_id");
 let albumTitle = urlParams.get("album_title");
 let userId = urlParams.get("user_id");
 let userName = urlParams.get("user_name");
+
+headerView();
 
 renderSwiper();
 

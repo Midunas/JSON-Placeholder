@@ -1,5 +1,5 @@
 import {firstLetterUpperCase} from './functions.js'
-
+import headerView from './header.js';
 let queryParams = document.location.search;
 let urlParams = new URLSearchParams(queryParams);
 let userId = urlParams.get('user_id');
@@ -7,6 +7,8 @@ let userId = urlParams.get('user_id');
 let mainWrapper = document.getElementById("wrapper");
 let postWrap = document.createElement('div');
 postWrap.classList.add('post-wrap');
+
+headerView();
 
 function renderUser () {
 fetch("https://jsonplaceholder.typicode.com/users/"+ userId)

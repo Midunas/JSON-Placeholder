@@ -1,5 +1,5 @@
 import {firstLetterUpperCase, renderListElement} from './functions.js';
-
+import headerView from './header.js';
 let searchResults = document.querySelector("#search-results-form");
 let usersList = document.createElement("ul");
 usersList.classList.add("search-result");
@@ -17,6 +17,7 @@ postsList.before(postsListTitle);
 albumsList.before(albumsListTitle);
 
 function init() {
+  headerView();
   innerPageSearchForm();
   outsidePageSearchForm();
 }

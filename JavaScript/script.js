@@ -4,6 +4,8 @@ import {
   firstLetterUpperCase,
   renderAllUsers
 } from "./functions.js";
+import headerView from './header.js';
+
 let postWrapper = document.querySelector("#posts-wrapper");
 
 function init() {
@@ -12,6 +14,7 @@ function init() {
   let albumsWrapper = document.getElementById("albums-wrapper");
 
   let limitUrl = `&_limit=4`;
+  headerView();
 
   getAllPosts(limitUrl, postWrapper);
 

@@ -1,9 +1,12 @@
+import headerView from './header.js';
 let queryParams = document.location.search;
 let urlParams = new URLSearchParams(queryParams);
 let postId = urlParams.get("post_id");
 
-let mainWrapper = document.querySelector("#wrapper");
+let mainWrapper = document.querySelector("#posts-wrapper");
 let userName = "";
+
+headerView();
 
 function renderPost() {
   fetch("https://jsonplaceholder.typicode.com/posts/" + postId)

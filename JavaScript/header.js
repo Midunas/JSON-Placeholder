@@ -1,3 +1,4 @@
+function headerView() {
 const navigationItems = [
   {
     title: "Home",
@@ -63,3 +64,5 @@ if (!pathname.includes("search.html")) {
 }
 
 document.body.prepend(header);
+}
+export default headerView;

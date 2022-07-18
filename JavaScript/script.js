@@ -1,22 +1,19 @@
-import {
-  getAllPosts,
-  getRandomInt,
-  firstLetterUpperCase,
-} from "./functions.js";
+import { getRandomInt, firstLetterUpperCase, } from "./functions.js";
 import headerView from "./header.js";
 import { getUsers } from "./users/usersController.js";
 import listUsers from "./users/usersListView.js";
+import { getPosts } from "./posts/postsController.js";
+import { renderPosts } from './posts/postsListView.js'
 
-let postWrapper = document.querySelector("#posts-wrapper");
-
-function init() {
+async function init() {
   let userAlbums = document.querySelector("#user-albums");
   let albumsWrapper = document.getElementById("albums-wrapper");
 
   let limitUrl = `&_limit=4`;
   headerView();
 
-  getAllPosts(limitUrl, postWrapper);
+  let postsData = await getPosts(limitUrl);
+  renderPosts(postsData);
 
   renderAlbums();
 
@@ -50,18 +47,14 @@ function init() {
     let userTitle = document.createElement("h4");
     userTitle.innerHTML = `By: <br><br> <a class="title" href="./user.html?user_id=${album.user.id}">${album.user.name}</a>`;
     let albumTitle = document.createElement("h4");
-    albumTitle.innerHTML = `<a class="title" href="./album.html?album_id=${
-      album.id
-    }&album_title=${album.title}&user_id=${album.userId}&user_name=${
-      album.user.name
-    }">${firstLetterUpperCase(album.title)}</a>`;
+    albumTitle.innerHTML = `<a class="title" href="./album.html?album_id=${album.id
+      }&album_title=${album.title}&user_id=${album.userId}&user_name=${album.user.name
+      }">${firstLetterUpperCase(album.title)}</a>`;
 
     albumItem.append(photoImage, albumTitle, userTitle, photoCount);
     userAlbums.append(albumItem);
     albumsWrapper.append(userAlbums);
   }
-
-  let usersWrapper = document.getElementById("users-wrapper");
 
   async function usersHome() {
     let usersData = await getUsers(limitUrl);

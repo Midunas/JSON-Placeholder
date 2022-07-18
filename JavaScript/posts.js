@@ -19,6 +19,7 @@ function renderPostsByUserId(id) {
     .then((res) => res.json())
     .then((user) => {
       user.posts.map((post) => {
+        let postWrapper = document.querySelector("#posts-wrapper");
         let paragraph = post.body;
 
         let updatedTitle = post.title[0].toUpperCase() + post.title.slice(1);

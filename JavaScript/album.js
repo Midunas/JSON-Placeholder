@@ -1,4 +1,4 @@
-import {getRandomInt} from './functions.js';
+import {getRandomInt, firstLetterUpperCase} from './functions.js';
 
 function init () {
 let queryParams = document.location.search;
@@ -7,7 +7,6 @@ let albumId = urlParams.get("album_id");
 let albumTitle = urlParams.get("album_title");
 let userId = urlParams.get("user_id");
 let userName = urlParams.get("user_name");
-console.log(albumTitle);
 
 renderSwiper();
 
@@ -21,7 +20,7 @@ function renderSwiper() {
       if (photos.length) {
         let albumTitleElement = document.createElement("span");
         albumTitleElement.classList.add("album-title");
-        albumTitleElement.innerHTML = `${albumTitle} <br> <br>`;
+        albumTitleElement.innerHTML = `${firstLetterUpperCase(albumTitle)} <br> <br>`;
 
         let albumAuthor = document.createElement("span");
         albumAuthor.classList.add("album-author");

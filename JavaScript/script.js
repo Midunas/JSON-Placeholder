@@ -52,7 +52,7 @@ function init() {
     let albumTitle = document.createElement("h4");
     albumTitle.innerHTML = `<a class="title" href="./album.html?album_id=${
       album.id
-    }&album_title${album.title}&user_id${album.userId}&user_name=${
+    }&album_title=${album.title}&user_id=${album.userId}&user_name=${
       album.user.name
     }">${firstLetterUpperCase(album.title)}</a>`;
 

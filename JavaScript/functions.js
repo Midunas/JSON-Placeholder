@@ -1,4 +1,3 @@
-
 export function renderListElement(data) {
   let itemElement = document.createElement("li");
   // itemElement.classList.add('search-item');
@@ -6,7 +5,6 @@ export function renderListElement(data) {
   data.parentElement.append(itemElement);
 }
 export function getAllPosts(limitUrl, postWrapper) {
-
   fetch(`https://jsonplaceholder.typicode.com/posts?_expand=user` + limitUrl)
     .then((res) => res.json())
     .then((posts) => {
@@ -81,41 +79,7 @@ export function renderComment(comment, commentDiv) {
 
   commentDiv.append(postCommentTitle, postCommentBody, postCommentEmail);
 }
-export function renderAllUsers(limitUrl, imageSize, className) {
-  fetch(`https://jsonplaceholder.typicode.com/users?_embed=posts` + limitUrl)
-    .then((res) => res.json())
-    .then((users) => {
-      users.map((user) => {
-        let mainWrapper = document.getElementById("users-wrapper");
-        let userItem = document.createElement("div");
-        userItem.classList.add(`user-wrap${className}`);
-        mainWrapper.append(userItem);
 
-        let userImage = document.createElement("img");
-        userImage.src =
-          "https://www.prajwaldesai.com/wp-content/uploads/2021/02/Find-Users-Last-Logon-Time-using-4-Easy-Methods.jpg";
-        userImage.style.height = `${imageSize}`;
-
-        let userName = document.createElement("h3");
-        userName.classList.add("user-name");
-        userName.innerHTML = `${user.name}`;
-
-        let postsCount = document.createElement("span");
-        postsCount.classList.add(`post-count`);
-        postsCount.innerHTML = `Posts count: ${user.posts.length} <br><br>`;
-
-        let showDataLink = document.createElement("a");
-        showDataLink.href = `./User.html?user_id=${user.id}`;
-        showDataLink.target = `_blank`;
-        let showDataButton = document.createElement("button");
-        showDataButton.classList.add("view-data-button");
-        showDataButton.textContent = `View data`;
-        showDataLink.append(showDataButton);
-
-        userItem.append(userImage, userName, postsCount, showDataLink);
-      });
-    });
-}
 export function firstLetterUpperCase(str) {
   return str[0].toUpperCase() + str.slice(1);
 }
@@ -157,7 +121,7 @@ export function renderAlbums() {
 }
 export function renderSingleAlbum(data) {
   let albumsWrapper = document.getElementById("albums-wrapper");
-  let {album, title, createdBy } = data;
+  let { album, title, createdBy } = data;
 
   let albumItem = document.createElement("div");
   albumItem.classList.add("album-item");
@@ -171,7 +135,11 @@ export function renderSingleAlbum(data) {
   let userTitle = document.createElement("h4");
   userTitle.innerHTML = `By: <br><br> <a class="title" href="./user.html?user_id=${album.user.id}">${album.user.name}</a>`;
   let albumTitle = document.createElement("h4");
-  albumTitle.innerHTML = `<a class="title" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${album.user.name}">${firstLetterUpperCase(album.title)}</a>`;
+  albumTitle.innerHTML = `<a class="title" href="./album.html?album_id=${
+    album.id
+  }&album_title=${album.title}&user_id=${album.userId}&user_name=${
+    album.user.name
+  }">${firstLetterUpperCase(album.title)}</a>`;
 
   albumItem.append(photoImage, albumTitle, userTitle, photoCount);
   albumsWrapper.append(albumItem);

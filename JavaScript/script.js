@@ -2,14 +2,14 @@ import {
   getAllPosts,
   getRandomInt,
   firstLetterUpperCase,
-  renderAllUsers
 } from "./functions.js";
-import headerView from './header.js';
+import headerView from "./header.js";
+import { getUsers } from "./users/usersController.js";
+import listUsers from "./users/usersListView.js";
 
 let postWrapper = document.querySelector("#posts-wrapper");
 
 function init() {
-  let userName = "";
   let userAlbums = document.querySelector("#user-albums");
   let albumsWrapper = document.getElementById("albums-wrapper");
 
@@ -62,6 +62,11 @@ function init() {
   }
 
   let usersWrapper = document.getElementById("users-wrapper");
-  renderAllUsers(limitUrl, `100px`, `-home`);
+
+  async function usersHome() {
+    let usersData = await getUsers(limitUrl);
+    listUsers(usersData, `100px`, `-home`);
+  }
+  usersHome();
 }
 init();

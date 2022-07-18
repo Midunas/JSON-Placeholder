@@ -1,4 +1,5 @@
-let postWrapper = document.querySelector("#wrapper");
+import {getAllPosts, renderComment} from './functions.js';
+
 function init() {
 let queryParams = document.location.search;
 let urlParams = new URLSearchParams(queryParams);

@@ -2,7 +2,7 @@ import {
   getAllPosts,
   getRandomInt,
   firstLetterUpperCase,
-  renderAllUsers,
+  renderAllUsers
 } from "./functions.js";
 let postWrapper = document.querySelector("#posts-wrapper");
 

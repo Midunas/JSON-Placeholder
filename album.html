@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Album</title>
     <script src="./JavaScript/header.js" defer></script>
-    <script src="./JavaScript/album.js" defer></script>
-    <script src="./JavaScript/functions.js" defer></script>
+    <script src="./JavaScript/album.js" type="module"></script>
+    <script src="./JavaScript/functions.js" type="module"></script>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="./Style/albums.css" />
     <link rel="stylesheet" href="./Style/navbar.css" />
@@ -20,12 +20,8 @@
     <div class="container" id="album-wrapper">
       <h1>Album</h1>
     </div>
-
     <div class="swiper-container">
-      <div class="swiper-wrapper grid-container">
-        <!-- <div class="swiper-slide">Slide 1</div> -->
-      </div>
-      <!-- Add Pagination -->
+      <div class="swiper-wrapper grid-container"></div>
       <div class="swiper-pagination"></div>
     </div>
     <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>

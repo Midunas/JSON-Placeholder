@@ -1,4 +1,4 @@
-import {getAllPosts, renderComment} from './functions.js';
+import {getAllPosts, renderComment, firstLetterUpperCase} from './functions.js';
 
 function init() {
 let queryParams = document.location.search;

@@ -1,12 +1,16 @@
 import {getRandomInt} from './functions.js';
+
+function init () {
 let queryParams = document.location.search;
 let urlParams = new URLSearchParams(queryParams);
 let albumId = urlParams.get("album_id");
 let albumTitle = urlParams.get("album_title");
 let userId = urlParams.get("user_id");
 let userName = urlParams.get("user_name");
+console.log(albumTitle);
 
 renderSwiper();
+
 function renderSwiper() {
   let albumWrapper = document.querySelector("#album-wrapper");
   let swiperWrapper = document.querySelector(".swiper-wrapper");
@@ -26,8 +30,7 @@ function renderSwiper() {
         albumWrapper.append(albumTitleElement, albumAuthor);
       } else {
         let textEl = document.createElement("p");
-        textEl.innerHTML =
-          "No albums were found... <a href='./albums.html'>Try here</a>";
+        textEl.innerHTML = "No albums were found... <a href='./albums.html'>Try here</a>";
 
         swiperWrapper.append(textEl);
       }
@@ -51,3 +54,5 @@ function renderSwiper() {
       });
     });
 }
+}
+init ();

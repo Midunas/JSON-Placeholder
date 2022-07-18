@@ -1,3 +1,5 @@
+import {firstLetterUpperCase, renderListElement} from './functions.js';
+
 let searchResults = document.querySelector("#search-results-form");
 let usersList = document.createElement("ul");
 usersList.classList.add("search-result");
@@ -150,10 +152,4 @@ function renderAllAlbums(searchText) {
       }
     });
 }
-// function renderListElement(data) {
-//   let itemElement = document.createElement("li");
-//   // itemElement.classList.add('search-item');
-//   itemElement.innerHTML = `<a href="${data.href}">${data.content}</a>`;
-//   data.parentElement.append(itemElement);
-// }
 init();

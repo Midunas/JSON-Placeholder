@@ -81,7 +81,6 @@ export function renderComment(comment, commentDiv) {
 
   commentDiv.append(postCommentTitle, postCommentBody, postCommentEmail);
 }
-
 export function renderAllUsers(limitUrl, imageSize, className) {
   fetch(`https://jsonplaceholder.typicode.com/users?_embed=posts` + limitUrl)
     .then((res) => res.json())
@@ -172,7 +171,7 @@ export function renderSingleAlbum(data) {
   let userTitle = document.createElement("h4");
   userTitle.innerHTML = `By: <br><br> <a class="title" href="./user.html?user_id=${album.user.id}">${album.user.name}</a>`;
   let albumTitle = document.createElement("h4");
-  albumTitle.innerHTML = `<a class="title" href="./album.html?album_id=${album.id}&album_title${album.title}&user_id${album.userId}&user_name=${album.user.name}">${firstLetterUpperCase(album.title)}</a>`;
+  albumTitle.innerHTML = `<a class="title" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${album.user.name}">${firstLetterUpperCase(album.title)}</a>`;
 
   albumItem.append(photoImage, albumTitle, userTitle, photoCount);
   albumsWrapper.append(albumItem);

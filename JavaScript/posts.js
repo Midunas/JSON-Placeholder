@@ -52,8 +52,6 @@ function renderPostsByUserId(id) {
             showCommentsButton.textContent = `View comments`;
           }
         };
-
-        commentDiv.append(postCommentTitle, postCommentBody, postCommentEmail);
         postDiv.append(
           postTitle,
           postParagraph,

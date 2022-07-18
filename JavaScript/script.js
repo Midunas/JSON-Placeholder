@@ -1,85 +1,64 @@
+import {
+  getAllPosts,
+  getRandomInt,
+  firstLetterUpperCase,
+  renderAllUsers,
+} from "./functions.js";
 let postWrapper = document.querySelector("#posts-wrapper");
 
-function init () {
-let userName = "";
-let userAlbums = document.querySelector("#user-albums");
-let albumWrapper = document.getElementById("albums-wrapper");
+function init() {
+  let userName = "";
+  let userAlbums = document.querySelector("#user-albums");
+  let albumsWrapper = document.getElementById("albums-wrapper");
 
-let limitUrl = `&_limit=4`;
+  let limitUrl = `&_limit=4`;
 
-getAllPosts(limitUrl);
+  getAllPosts(limitUrl, postWrapper);
 
-fetch(`https://jsonplaceholder.typicode.com/albums?_limit=4`)
-  .then((res) => res.json())
-  .then((albums) => {
-    albums.map((album) => {
-      let userId = album.userId;
+  renderAlbums();
 
-      fetch("https://jsonplaceholder.typicode.com/users/" + userId)
-        .then((res) => res.json())
-        .then((user) => {
-          fetch(
-            `https://jsonplaceholder.typicode.com/albums/${userId}/photos?_limit=40`
-          )
-            .then((res) => res.json())
-            .then((photos) => {
-
-              let albumItem = document.createElement("div");
-              albumItem.classList.add("album-item");
-
-              let photoImage = document.createElement("img");
-              photoImage.src = `https://picsum.photos/id/${getRandomInt(27)}/200`;
-
-              let photoCount = document.createElement("p");
-              photoCount.innerHTML = `(${photos.length} Photos)`;
-
-              let userTitle = document.createElement("h4");
-              userTitle.innerHTML = `By: <br> <a class="title" href="./user.html?user_id=${user.id}">${user.name}</a>`;
-
-              let albumTitle = document.createElement("h4");
-              albumTitle.innerHTML = `<a class="title" href="./album.html?album_id=${album.id}&album_title=${album.title}&user_id=${album.userId}&user_name=${user.name}">${firstLetterUpperCase(album.title)}</a>`;
-
-              albumItem.append(photoImage,albumTitle, userTitle, photoCount);
-              userAlbums.append(albumItem);
-              albumWrapper.append(userAlbums);
-            });
+  function renderAlbums() {
+    fetch(
+      `https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos&_limit=4`
+    )
+      .then((res) => res.json())
+      .then((albums) => {
+        albums.map((singleAlbum) => {
+          renderSingleAlbum({
+            album: singleAlbum,
+            title: "All albums:",
+            createdBy: `<div>Album created by: <a href="./user.html?user_id=${singleAlbum.user.id}">${singleAlbum.user.name}</a></div>`,
+          });
         });
-    });
-  });
-
-let usersWrapper = document.getElementById("users-wrapper");
-
-function renderUsers() {
-  fetch("https://jsonplaceholder.typicode.com/users?_limit=5")
-    .then((res) => res.json())
-    .then((users) => {
-      users.map((user) => {
-        let userItem = document.createElement("div");
-        userItem.classList.add("user-wrap-home");
-        usersWrapper.append(userItem);
-
-        let userImage = document.createElement("img");
-        userImage.src =
-          "https://www.prajwaldesai.com/wp-content/uploads/2021/02/Find-Users-Last-Logon-Time-using-4-Easy-Methods.jpg";
-        userImage.style.height = `100px`;
-
-        let userName = document.createElement("h3");
-        userName.classList.add("user-name");
-        userName.innerHTML = `${user.name}`;
-
-        let showDataLink = document.createElement("a");
-        showDataLink.href = `./User.html?user_id=${user.id}`;
-        showDataLink.target = `_blank`;
-        let showDataButton = document.createElement("button");
-        showDataButton.classList.add("view-data-button");
-        showDataButton.textContent = `View data`;
-        showDataLink.append(showDataButton);
-
-        userItem.append(userImage, userName, showDataLink);
       });
-    });
-}
+  }
+  function renderSingleAlbum(data) {
+    let { album, title, createdBy } = data;
 
-renderUsers();
+    let albumItem = document.createElement("div");
+    albumItem.classList.add("album-item");
+
+    let photoImage = document.createElement("img");
+    photoImage.src = `https://picsum.photos/id/${getRandomInt(27)}/200`;
+
+    let photoCount = document.createElement("p");
+    photoCount.innerHTML = `(${album.photos.length} Photos)`;
+
+    let userTitle = document.createElement("h4");
+    userTitle.innerHTML = `By: <br><br> <a class="title" href="./user.html?user_id=${album.user.id}">${album.user.name}</a>`;
+    let albumTitle = document.createElement("h4");
+    albumTitle.innerHTML = `<a class="title" href="./album.html?album_id=${
+      album.id
+    }&album_title${album.title}&user_id${album.userId}&user_name=${
+      album.user.name
+    }">${firstLetterUpperCase(album.title)}</a>`;
+
+    albumItem.append(photoImage, albumTitle, userTitle, photoCount);
+    userAlbums.append(albumItem);
+    albumsWrapper.append(userAlbums);
+  }
+
+  let usersWrapper = document.getElementById("users-wrapper");
+  renderAllUsers(limitUrl, `100px`, `-home`);
 }
 init();

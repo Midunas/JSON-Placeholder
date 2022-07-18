@@ -1,38 +1,4 @@
-// export default function renderAllUsers (mainWrapper) {
-function renderAllUsers () {
-  
-  fetch(`https://jsonplaceholder.typicode.com/users?_embed=posts`)
-    .then((res) => res.json())
-    .then((users) => {
-      users.map((user) => {
-    
-        let mainWrapper = document.getElementById("wrapper");
-            let userItem = document.createElement("div");
-            userItem.classList.add("user-wrap");
-            mainWrapper.append(userItem);
+import {renderAllUsers} from './functions.js';
+let limitUrl = ``;
 
-            let userImage = document.createElement("img");
-            userImage.src = "https://www.prajwaldesai.com/wp-content/uploads/2021/02/Find-Users-Last-Logon-Time-using-4-Easy-Methods.jpg";
-            userImage.style.height = `175px`;
-
-            let userName = document.createElement("h3");
-            userName.classList.add("user-name");
-            userName.innerHTML = `${user.name}`;
-
-            let postsCount = document.createElement("span");
-            postsCount.classList.add(`post-count`);
-            postsCount.innerHTML = `Posts count: ${user.posts.length} <br><br>`;
-
-            let showDataLink = document.createElement("a");
-            showDataLink.href = `./User.html?user_id=${user.id}`;
-            showDataLink.target = `_blank`;
-            let showDataButton = document.createElement("button");
-            showDataButton.classList.add("view-data-button");
-            showDataButton.textContent = `View data`;
-            showDataLink.append(showDataButton);
-
-            userItem.append(userImage, userName, postsCount, showDataLink);
-          });
-      });
-};
-renderAllUsers();
+renderAllUsers(limitUrl, `175px`, ``);

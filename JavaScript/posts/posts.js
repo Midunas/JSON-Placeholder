@@ -9,7 +9,6 @@ async function init() {
   headerView();
 
   let limitUrl = ``;
-  let userName = "";
 
   if (userId !== null) {
     let postsDataById = await getPostsByUserId(userId);

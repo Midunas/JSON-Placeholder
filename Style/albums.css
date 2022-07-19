@@ -34,3 +34,11 @@ body{
 .album-item{
     width: 30%;
 }
+#user-albums{
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

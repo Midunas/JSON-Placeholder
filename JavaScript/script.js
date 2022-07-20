@@ -3,7 +3,6 @@ import { getUsers } from "./users/usersController.js";
 import listUsers from "./users/usersListView.js";
 import { getPosts } from "./posts/postsController.js";
 import { renderPosts } from './posts/postsListView.js';
-import { renderSingleAlbum } from './albums/albumsListView.js';
 import { getAlbums } from './albums/albumsController.js';
 import { renderAlbums } from './albums/albumsListView.js';
 

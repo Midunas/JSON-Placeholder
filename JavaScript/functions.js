@@ -22,3 +22,10 @@ export function firstLetterUpperCase(str) {
 export function getRandomInt(max) {
   return Math.floor(Math.random() * max);
 }
+export function renderOptionElement(data) {
+  let optionElement = document.createElement('option');
+  optionElement.textContent = data.content;
+  optionElement.value = data.value;
+
+  data.parentElement.append(optionElement);
+}

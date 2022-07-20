@@ -1,6 +1,7 @@
 
 #wrapper{
     display: block;
+    margin-top: 200px;
 }
 .search-result{
     display: flex;

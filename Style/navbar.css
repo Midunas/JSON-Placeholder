@@ -43,16 +43,31 @@ ul {
     margin-top: 15px;
     margin-left: -560px; 
 }
-#search, #search-button {
-  float: right;
+#search {
   padding: 8px;
   border: none;
   border-radius: 2px;
-  opacity: 90%;
   margin-top: 8px;
   margin-right: 16px;
   font-size: 14px;
   }
 .list-flex{
   display: flex;
+}
+#search-input-button {
+  background: transparent;
+  height: 40px;
+  width: 40px;
+  border: none;
+  outline: none;
+  float: right;
+  margin-left: -60px;
+  margin-top: 5px;
+  margin-right: 20px;
+  position: relative;
+}
+#search-input-button img {
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
 }

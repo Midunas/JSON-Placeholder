@@ -1,6 +1,8 @@
 import { firstLetterUpperCase, renderComment } from "../functions.js";
+
 function renderPosts(posts) {
     posts.map((post) => {
+
         let postWrapper = document.querySelector("#posts-wrapper");
         let updatedTitleP = firstLetterUpperCase(post.body);
 

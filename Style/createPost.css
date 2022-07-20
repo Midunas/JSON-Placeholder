@@ -1,0 +1,13 @@
+body {
+    margin: auto;
+    background: #f2f2f2;
+}
+#create-post-form {
+    text-align: center;
+    width: 1040px;
+    margin: auto;
+    margin-top: 200px;
+}
+.form-control {
+    padding: 10px;
+}

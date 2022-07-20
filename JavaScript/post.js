@@ -1,4 +1,5 @@
 import headerView from './header.js';
+import { renderComment } from './functions.js';
 import { getPostsByUserId } from './posts/postsController.js';
 import { renderPostsByUserId } from './posts/postsListView.js';
 
@@ -18,7 +19,6 @@ async function init() {
     fetch("https://jsonplaceholder.typicode.com/posts/" + postId)
       .then((res) => res.json())
       .then((post) => {
-        let paragraph = post.body;
 
         let updatedTitle = post.title[0].toUpperCase() + post.title.slice(1);
 
@@ -31,7 +31,7 @@ async function init() {
 
         let postParagraph = document.createElement("p");
         postParagraph.classList.add("post-content");
-        postParagraph.textContent = paragraph;
+        postParagraph.textContent = post.body;
 
         let postAuthor = document.createElement("a");
 
@@ -83,9 +83,7 @@ async function init() {
           .then((res) => res.json())
           .then((comments) => {
             comments.map((comment) => {
-              postCommentTitle.textContent = `Title: ${comment.name}`;
-              postCommentEmail.textContent = `Email: ${comment.email}`;
-              postCommentBody.innerHTML = `<strong>Comment</strong>: <br><br> ${comment.body}`;
+              renderComment(comment, commentDiv);
             });
           });
       });

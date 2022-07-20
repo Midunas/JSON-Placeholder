@@ -20,3 +20,5 @@ async function init() {
 
 }
 init()
+
+// funkcija funkcijoje su if ir else 

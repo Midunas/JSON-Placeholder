@@ -7,6 +7,19 @@ body{
     margin: auto;
     padding-top: 100px;
 }
+.title{
+    text-decoration: none;
+    color: rgb(85, 49, 6);
+}
+.swiper-container {
+        width: 1020px;
+        margin: auto;
+        padding-top: 100px;
+}
+.album-title{
+    color: rgb(51, 42, 31);
+    font-size: 20px;
+}
 #albums-wrapper{
     width: 1020px;
     margin: auto;
@@ -20,5 +33,12 @@ body{
 }
 .album-item{
     width: 30%;
-
+}
+#user-albums{
+    display: flex;
+    margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }

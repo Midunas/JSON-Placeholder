@@ -1,45 +1,63 @@
+import { getRandomInt, firstLetterUpperCase } from "./functions.js";
+import headerView from "./header.js";
 
-let queryParams = document.location.search;
-let urlParams = new URLSearchParams(queryParams);
-let albumId = urlParams.get('album_id');
-let albumTitle = urlParams.get('album_title');
-let userId = urlParams.get('user_id');
-let userName = urlParams.get('user_name');
+function init() {
+  let queryParams = document.location.search;
+  let urlParams = new URLSearchParams(queryParams);
+  let albumId = urlParams.get("album_id");
+  let albumTitle = urlParams.get("album_title");
+  let userId = urlParams.get("user_id");
+  let userName = urlParams.get("user_name");
 
+  headerView();
 
-fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos?_limit=10`)
-    .then(res => res.json())
-    .then(photos => {
+  renderSwiper();
 
-        let albumWrapper = document.getElementById('album-wrapper');
+  function renderSwiper() {
+    let albumWrapper = document.querySelector("#album-wrapper");
+    let swiperWrapper = document.querySelector(".swiper-wrapper");
 
-        if(photos.length > 0) {
+    fetch(`https://jsonplaceholder.typicode.com/albums/${albumId}/photos`)
+      .then((res) => res.json())
+      .then((photos) => {
+        if (photos.length) {
+          let albumTitleElement = document.createElement("span");
+          albumTitleElement.classList.add("album-title");
+          albumTitleElement.innerHTML = `${firstLetterUpperCase(
+            albumTitle
+          )} <br> <br>`;
 
+          let albumAuthor = document.createElement("span");
+          albumAuthor.classList.add("album-author");
+          albumAuthor.innerHTML = `<strong>Album author: </strong><a href="./user.html?user_id=${userId}">${userName}</a>`;
 
+          albumWrapper.append(albumTitleElement, albumAuthor);
+        } else {
+          let textEl = document.createElement("p");
+          textEl.innerHTML =
+            "No albums were found... <a href='./albums.html'>Try here</a>";
 
-        let albumTitleElement = document.createElement('h1');
-        albumTitleElement.classList.add('album-title');
-        albumTitleElement.textContent = albumTitle;
+          swiperWrapper.append(textEl);
+        }
+      });
 
-        let albumAuthorElement = document.createElement('span');
-        albumAuthorElement.classList.add(`album-author`);
-        albumAuthorElement.innerHTML = `<strong>Album author: </strong> <a href="./User.html?user_id=${userId }"</a> ${userName}<br><br><br>`
+    fetch("https://picsum.photos/v2/list?page=2&limit=15")
+      .then((res) => res.json())
+      .then((photos) => {
+        photos.map((photo) => {
+          let albumPhoto = document.createElement("div");
+          albumPhoto.classList.add("swiper-slide");
 
-        let albumPhotos = document.createElement('div');
-        albumPhotos.classList.add('album-photos');
-
-        albumWrapper.append(albumTitleElement,albumAuthorElement,albumPhotos);
-
-        photos.map(photo => {
-            
-            let imageElement = document.createElement('img');
-            imageElement.classList.add('single-photos')
-            imageElement.src = photo.thumbnailUrl;
-            imageElement.setAttribute('alt', photo.title);
-
-            albumPhotos.prepend(imageElement);
-        })
-    } else {
-        albumWrapper.innerHTML = `<h1> Nothing to be found :( </h1>`
-    }
-    })
+          let image = document.createElement("img");
+          image.setAttribute(
+            "src",
+            `https://picsum.photos/id/${getRandomInt(27)}/200/300`
+          );
+          image.setAttribute("alt", photo.title);
+          albumPhoto.append(image);
+          swiperWrapper.prepend(albumPhoto);
+        });
+      });
+  }
+}
+init();

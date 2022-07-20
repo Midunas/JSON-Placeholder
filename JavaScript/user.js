@@ -1,14 +1,16 @@
+import {firstLetterUpperCase} from './functions.js'
+import headerView from './header.js';
 let queryParams = document.location.search;
 let urlParams = new URLSearchParams(queryParams);
 let userId = urlParams.get('user_id');
-
-console.log(userId);
 
 let mainWrapper = document.getElementById("wrapper");
 let postWrap = document.createElement('div');
 postWrap.classList.add('post-wrap');
 
+headerView();
 
+function renderUser () {
 fetch("https://jsonplaceholder.typicode.com/users/"+ userId)
   .then((res) => res.json())
   .then((user) => {
@@ -62,8 +64,8 @@ fetch("https://jsonplaceholder.typicode.com/users/"+ userId)
         let postItem = document.createElement('div');
         postItem.classList.add('post-item');
 
-        postItem.innerHTML = `<h4> ${post.title}</h4>
-                              <p>${post.body}</p>
+        postItem.innerHTML = `<h4> ${firstLetterUpperCase(post.title)}</h4>
+                              <p>${firstLetterUpperCase(post.body)}</p>
                               <a class="read-more" href="./post.html?post_id=${post.id}">Read More</a>`;
 
         postItem.append(postTitle);
@@ -73,3 +75,5 @@ fetch("https://jsonplaceholder.typicode.com/users/"+ userId)
     })
 
       });
+    }
+  renderUser();

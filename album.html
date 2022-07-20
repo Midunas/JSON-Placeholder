@@ -5,28 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Album</title>
-    <script src="./JavaScript/album.js" defer></script>
+    <script src="./JavaScript/album.js" type="module"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="./Style/albums.css" />
     <link rel="stylesheet" href="./Style/navbar.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
   </head>
   <body>
-    <div class="header">
-      <img class="logo-image" src="./images/lgorandom.JPG" />
-      <span class="page-name">Album</span>
-
-      <ul>
-        <li></li>
-        <li>
-          <a href="./index.html">Home</a>
-        </li>
-        <li><a href="./users.html">Users</a></li>
-        <li><a href="./albums.html">Albums</a></li>
-        <li><a href="./posts.html">Posts</a></li>
-        <li></li>
-      </ul>
+    <div class="container" id="album-wrapper">
+      <h1>Album</h1>
     </div>
-    <div id="album-wrapper">
-      <h1>Album:</h1>
+    <div class="swiper-container">
+      <div class="swiper-wrapper grid-container"></div>
+      <div class="swiper-pagination"></div>
     </div>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script src="./JavaScript/swiper.js"></script>
   </body>
 </html>

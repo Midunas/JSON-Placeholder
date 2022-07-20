@@ -10,7 +10,6 @@ h2{
     margin: auto;
     padding-top: 50px ;
     padding-bottom: 50px ;
-
     max-width: 1230px;
 }
 .item-names{
@@ -32,6 +31,7 @@ h2{
 }
 #albums-wrapper{
     width: 30%;
+    margin-top: 22px;
 }
 #users-wrapper{
     width: 30%;
@@ -41,6 +41,7 @@ h2{
     margin: 20px;
     padding: 20px;
     border: 1px solid black;
+    border-radius: 8px;
 }
 .comments-button{
     border: 0px;
@@ -65,14 +66,23 @@ h2{
 .albums-title {
     margin-bottom: -20px;
 }
-
 .user-wrap-home{
     margin: auto;
     margin-top: 20px;
     margin-bottom: 40px;
-    width: 48%;
+    width: 178px;
     text-align: center;
     background-color: #3f71bd;
     color: white;
     font-size: 17px;
+}
+.title{
+    text-decoration: none;
+    color: rgb(85, 49, 6);
+}
+.view-data-button{
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    border: none;
 }

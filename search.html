@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search Page</title>
+    <script src="./JavaScript/search.js" type="module"></script>
+    <link rel="stylesheet" href="./Style/style.css" />
+    <link rel="stylesheet" href="./Style/navbar.css" />
+    <link rel="stylesheet" href="./Style/users.css" />
+    <link rel="stylesheet" href="./Style/search.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <form id="search-page-form">
+        <input
+          type="text"
+          name="search-input"
+          id="search-input-text"
+          placeholder="Type to search..."
+        />
+        <button type="submit" value="Search" id="search-input-button">
+          <img src="./images/searchButton.png" />
+        </button>
+      </form>
+      <div id="search-results-form"></div>
+      <div class="user-cards"></div>
+    </div>
+  </body>
+</html>

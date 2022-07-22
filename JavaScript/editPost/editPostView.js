@@ -1,5 +1,5 @@
-import { getUserById } from "./createPost/createPostController.js";
-import { firstLetterUpperCase } from "./functions.js";
+import { getUserById } from "../createPost/createPostController.js";
+import { firstLetterUpperCase } from "../functions.js";
 
 export default async function editNewPost(createdPost, formElement) {
     let { body, title, id, userId } = createdPost;

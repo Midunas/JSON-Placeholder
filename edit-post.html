@@ -10,30 +10,31 @@
     <link rel="stylesheet" href="./Style/editPost.css" />
   </head>
   <body>
-    <form id="edit-post-form">
-      <div class="form-control">
-        <label for="post-title">Post title:</label>
-        <input type="text" name="title" id="post-title" />
-      </div>
+    <div id="wrapper">
+      <form id="edit-post-form">
+        <div class="form-control">
+          <label for="post-title">Post title:</label>
+          <input type="text" name="title" id="post-title" />
+        </div>
 
-      <div class="form-control">
-        <label for="post-content">Post content:</label>
-        <textarea
-          name="content"
-          id="post-content"
-          cols="50"
-          rows="10"
-        ></textarea>
-      </div>
+        <div class="form-control">
+          <label for="post-content">Post content:</label>
+          <textarea
+            name="content"
+            id="post-content"
+            cols="50"
+            rows="10"
+          ></textarea>
+        </div>
 
-      <div class="form-control">
-        <label for="post-author">Post author:</label>
-        <select name="author" id="post-author"></select>
-      </div>
+        <div class="form-control">
+          <label for="post-author">Post author:</label>
+          <select name="author" id="post-author"></select>
+        </div>
 
-      <input type="submit" value="Edit" class="edit-post-button" />
-    </form>
-
+        <input type="submit" value="Edit" class="edit-post-button" />
+      </form>
+    </div>
     <script type="module" src="./JavaScript/editPost.js"></script>
   </body>
 </html>

@@ -1,4 +1,5 @@
 import { getUserById } from "./createPost/createPostController.js";
+import { firstLetterUpperCase } from "./functions.js";
 
 export default async function editNewPost(createdPost, formElement) {
     let { body, title, id, userId } = createdPost;
@@ -7,7 +8,7 @@ export default async function editNewPost(createdPost, formElement) {
     createdPostWrapper.classList.add('post-wrapper');
 
     let postTitleElement = document.createElement('h2');
-    postTitleElement.innerHTML = `${title} <span>(id: ${id})</span>`;
+    postTitleElement.innerHTML = `${firstLetterUpperCase(title)} <span>(id: ${id})</span>`;
 
     let postAuthor = await getUserById(userId);
 
@@ -15,7 +16,7 @@ export default async function editNewPost(createdPost, formElement) {
     postAuthorElement.innerHTML = `Post author: <a href="./user.html?user_id=${userId}">${postAuthor.name}</a>`
 
     let postContentElement = document.createElement('p');
-    postContentElement.textContent = body;
+    postContentElement.textContent = firstLetterUpperCase(body);
 
     createdPostWrapper.append(postTitleElement, postAuthorElement, postContentElement);
 

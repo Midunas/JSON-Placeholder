@@ -21,6 +21,11 @@ function renderPosts(posts) {
 
         let postAuthor = document.createElement("a");
 
+        let editPost = document.createElement('a');
+        editPost.classList.add('edit-post-button');
+        editPost.textContent = 'Edit post';
+        editPost.setAttribute('href', `./edit-post.html?post_id=${post.id}`)
+
         let commentDiv = document.createElement("div");
         commentDiv.classList.add("comment-div");
         commentDiv.style.display = "none";
@@ -42,6 +47,7 @@ function renderPosts(posts) {
             postTitle,
             postParagraph,
             postAuthor,
+            editPost,
             showCommentsButton,
             commentDiv
         );

@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Edit Post</title>
     <link rel="stylesheet" href="./Style/navbar.css" />
+    <link rel="stylesheet" href="./Style/createPost.css" />
+    <link rel="stylesheet" href="./Style/editPost.css" />
   </head>
   <body>
-    <form id="create-post-form">
+    <form id="edit-post-form">
       <div class="form-control">
         <label for="post-title">Post title:</label>
         <input type="text" name="title" id="post-title" />
@@ -29,9 +31,9 @@
         <select name="author" id="post-author"></select>
       </div>
 
-      <input type="submit" value="Create post" />
+      <input type="submit" value="Edit" class="edit-post-button" />
     </form>
 
-    <script type="module" src="./JavaScript/createUser.js"></script>
+    <script type="module" src="./JavaScript/editPost.js"></script>
   </body>
 </html>

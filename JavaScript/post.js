@@ -12,9 +12,6 @@ async function init() {
 
   headerView();
 
-  // let postsDataById = await getPostsByUserId(userId);
-  // renderPostsByUserId(postsDataById);
-
   function renderPost() {
     fetch("https://jsonplaceholder.typicode.com/posts/" + postId)
       .then((res) => res.json())

@@ -1,15 +1,12 @@
 import headerView from '../header.js';
 import { getAllUsers } from '../createPost/createPostController.js';
 import { editPost } from './editPostController.js';
-import { renderOptionElement, firstLetterUpperCase } from '../functions.js';
+import { renderOptionElement, firstLetterUpperCase, getPostUrlParams } from '../functions.js';
 import createPost from '../createPost/createPostView.js';
 
 async function init() {
     headerView();
-    let queryParams = document.location.search;
-    let urlParams = new URLSearchParams(queryParams);
-    let postId = urlParams.get("post_id");
-
+    let postId = getPostUrlParams();
     fetch('https://jsonplaceholder.typicode.com/posts/' + postId)
         .then(res => res.json())
         .then(posts => {

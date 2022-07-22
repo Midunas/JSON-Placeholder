@@ -86,3 +86,6 @@ h2{
     border-radius: 20px;
     border: none;
 }
+.edit-post-button{
+    display: none;
+}

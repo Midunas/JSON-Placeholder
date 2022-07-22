@@ -29,3 +29,15 @@ export function renderOptionElement(data) {
 
   data.parentElement.append(optionElement);
 }
+export function getPostUrlParams() {
+  let queryParams = document.location.search;
+  let urlParams = new URLSearchParams(queryParams);
+  let postId = urlParams.get("post_id");
+  return postId;
+}
+export function getUserIdUrlParams() {
+  let queryParams = document.location.search;
+  let urlParams = new URLSearchParams(queryParams);
+  let userId = urlParams.get("user_id");
+  return userId;
+}

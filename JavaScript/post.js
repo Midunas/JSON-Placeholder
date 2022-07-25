@@ -1,7 +1,5 @@
 import headerView from './header.js';
 import { renderComment } from './functions.js';
-import { getPostsByUserId } from './posts/postsController.js';
-import { renderPostsByUserId } from './posts/postsListView.js';
 
 async function init() {
   let queryParams = document.location.search;
@@ -40,6 +38,7 @@ async function init() {
         let commentDiv = document.createElement("div");
         commentDiv.classList.add("comment-div");
         commentDiv.style.display = "none";
+
         let postCommentTitle = document.createElement("h4");
         let postCommentBody = document.createElement("p");
         postCommentBody.classList.add("post-comment");
@@ -82,9 +81,61 @@ async function init() {
             comments.map((comment) => {
               renderComment(comment, commentDiv);
             });
+
+            let createCommentForm = document.getElementById('create-comment-form');
+
+            createCommentForm.addEventListener('submit', async (event) => {
+              event.preventDefault();
+              let name = event.target.elements.name.value;
+              let email = event.target.elements.email.value;
+              let body = event.target.elements.body.value;
+
+              let newComment = {
+                name,
+                email,
+                body,
+                postId: Number(postId),
+              }
+
+              let editCommentId = event.target.dataset.editCommentId;
+              console.log(editCommentId);
+
+              if (!editCommentId) {
+                let res = await fetch('https://jsonplaceholder.typicode.com/comments', {
+                  method: 'POST',
+                  body: JSON.stringify(newComment),
+                  headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                  },
+                });
+
+                let responseComment = await res.json();
+                renderComment(responseComment, commentDiv);
+              } else {
+                let res = await fetch('https://jsonplaceholder.typicode.com/comments/' + editCommentId, {
+                  method: 'PATCH',
+                  body: JSON.stringify(newComment),
+                  headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                  },
+                });
+
+                let responseComment = await res.json();
+                renderComment(responseComment, commentDiv);
+              }
+
+              createCommentForm.reset();
+              createCommentForm.elements['edit-button'].value = 'Add a comment';
+              delete event.target.dataset.editCommentId;
+
+            });
+
+
           });
+
       });
+
   }
   renderPost();
 }
-init();
+init()

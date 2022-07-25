@@ -1,7 +1,7 @@
-export async function editPost(post) {
-    let res = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
+export async function editUser(user) {
+    let res = await fetch('https://jsonplaceholder.typicode.com/users/1', {
         method: 'PUT',
-        body: JSON.stringify(post),
+        body: JSON.stringify(user),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
         },

@@ -42,3 +42,8 @@ body{
     align-items: center;
     text-align: center;
 }
+ a{
+    text-decoration: none;
+    color: rgb(85, 49, 6);
+    font-size: 18px;
+}

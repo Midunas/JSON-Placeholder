@@ -32,3 +32,7 @@ h1{
     font-size: 17px;
     position: sticky;
 }
+#edit-user-form {
+    margin: auto;
+    margin-top: 100px;
+}

@@ -1,3 +1,7 @@
+body{
+    margin: auto;
+    background: #f2f2f2;
+}
 .edit-post-button{
     text-decoration: none;
     background: #4966b1;
@@ -7,6 +11,7 @@
     border-radius: 10px;
     cursor: pointer;
     box-shadow: 0px 1px 15px 0px rgb(73 102 177 / 70%);
+    float: right;
 }
 #wrapper{
     margin: auto;
@@ -15,10 +20,6 @@
     justify-content: space-between;
     flex-wrap: wrap;
     margin-top: 100px;
-}
-body{
-    margin: auto;
-    background: #f2f2f2;
 }
 #post-wrapper{
     width: 1020px;
@@ -35,8 +36,10 @@ body{
     width: 50%;
     margin-top: 50px;
     margin-bottom: 20px;
-    /* margin: 20px; */
 }
 #edit-post-form{
     margin: auto;
+}
+.form-control{
+    width: 20%;
 }

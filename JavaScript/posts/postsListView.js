@@ -1,8 +1,9 @@
 import { firstLetterUpperCase, renderComment } from "../functions.js";
 
-function renderPosts(posts) {
+function renderPosts(posts, boolean) {
     posts.map((post) => {
 
+        let showEditButton = boolean;
         let postWrapper = document.querySelector("#posts-wrapper");
         let updatedTitleP = firstLetterUpperCase(post.body);
 
@@ -21,11 +22,6 @@ function renderPosts(posts) {
 
         let postAuthor = document.createElement("a");
 
-        let editPost = document.createElement('a');
-        editPost.classList.add('edit-post-button');
-        editPost.textContent = 'Edit post';
-        editPost.setAttribute('href', `./edit-post.html?post_id=${post.id}`)
-
         let commentDiv = document.createElement("div");
         commentDiv.classList.add("comment-div");
         commentDiv.style.display = "none";
@@ -43,14 +39,29 @@ function renderPosts(posts) {
                 showCommentsButton.textContent = `View comments`;
             }
         };
-        postDiv.append(
-            postTitle,
-            postParagraph,
-            postAuthor,
-            editPost,
-            showCommentsButton,
-            commentDiv
-        );
+        if (showEditButton) {
+            let editPost = document.createElement('a');
+            editPost.classList.add('edit-post-button');
+            editPost.textContent = 'Edit post';
+            editPost.setAttribute('href', `./edit-post.html?post_id=${post.id}`)
+            postDiv.append(
+                postTitle,
+                postParagraph,
+                postAuthor,
+                editPost,
+                showCommentsButton,
+                commentDiv
+            );
+
+        } else {
+            postDiv.append(
+                postTitle,
+                postParagraph,
+                postAuthor,
+                showCommentsButton,
+                commentDiv
+            );
+        }
         postWrapper.append(postDiv);
 
         postAuthor.innerHTML = `Author: <a href="User.html?user_id=${post.user.id}">${post.user.name} <br><br></a>`;

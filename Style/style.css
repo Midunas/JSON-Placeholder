@@ -76,7 +76,7 @@ h2{
     color: white;
     font-size: 17px;
 }
-.title{
+.title, a{
     text-decoration: none;
     color: rgb(85, 49, 6);
 }
@@ -85,7 +85,4 @@ h2{
     margin-bottom: 10px;
     border-radius: 20px;
     border: none;
-}
-.edit-post-button{
-    display: none;
 }

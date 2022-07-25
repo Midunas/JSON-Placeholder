@@ -41,7 +41,7 @@ async function init() {
 
 
         let newPost = {
-
+            id: postId,
             title: newPostTitle,
             body: newPostContent,
             userId: newPostAuthor,

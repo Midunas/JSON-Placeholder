@@ -7,7 +7,7 @@ import { getAlbums } from './albums/albumsController.js';
 import { renderAlbums } from './albums/albumsListView.js';
 
 async function init() {
-  let limitUrl = `&_limit=4`;
+  let limitUrl = 4;
   headerView();
 
   let postsData = await getPosts(limitUrl);

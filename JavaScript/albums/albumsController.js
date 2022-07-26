@@ -1,5 +1,5 @@
 async function getAlbums(limitUrl) {
-  let res = await fetch(`https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos${limitUrl}`);
+  let res = await fetch(`https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos&_limit=${limitUrl}`);
   let albumData = await res.json();
   return albumData;
 }

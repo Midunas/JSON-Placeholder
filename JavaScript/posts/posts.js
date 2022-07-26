@@ -7,7 +7,7 @@ async function init() {
   let userId = urlParams.get("user_id");
   headerView();
 
-  let limitUrl = ``;
+  let limitUrl = 25;
 
   if (userId !== null) {
     let postsDataById = await getPostsByUserId(userId);
@@ -16,7 +16,6 @@ async function init() {
     let postsData = await getPosts(limitUrl);
     renderPosts(postsData, true);
   }
-
 }
 init()
 

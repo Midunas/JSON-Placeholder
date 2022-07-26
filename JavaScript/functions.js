@@ -3,49 +3,53 @@ export function renderListElement(data) {
   itemElement.innerHTML = `<a href="${data.href}">${data.content}</a>`;
   data.parentElement.append(itemElement);
 }
-export function renderComment(comment, commentDiv) {
+export function renderComment(comment, commentsWrapper, editCommentId) {
 
-  let postCommentTitle = document.createElement("h4");
-  let postCommentBody = document.createElement("p");
-  postCommentBody.classList.add("post-comment");
-  let postCommentEmail = document.createElement("p");
-  postCommentTitle.textContent = `Title: ${firstLetterUpperCase(comment.name)}`;
-  postCommentEmail.innerHTML = `<strong>Email:</strong> ${comment.email}`;
-  postCommentBody.innerHTML = `<strong>Comment</strong>: <br><br> ${firstLetterUpperCase(
-    comment.body
-  )}`;
+  let pathname = document.location.pathname;
+  let commentItem;
 
-  commentDiv.append(postCommentTitle, postCommentBody, postCommentEmail);
+  if (!editCommentId) {
+    commentItem = document.createElement('div');
+    commentItem.classList.add('comment-item');
+    commentItem.dataset.commentId = comment.id;
 
-  let editButton = document.createElement('button');
-  editButton.classList.add('edit-post-button')
-  editButton.textContent = 'Edit';
+    commentsWrapper.prepend(commentItem);
+  } else {
+    commentItem = document.querySelector(`[data-comment-id="${comment.id}"]`);
+  }
 
-  editButton.addEventListener('click', () => {
+  commentItem.innerHTML = `<h4> Title: ${firstLetterUpperCase(comment.name)} </h4> 
+                              <span> Comment by: ${comment.email} </span>
+                              <p> <strong>Comment</strong>: <br><br> ${firstLetterUpperCase(comment.body)} </p>`
 
-    let commentForm = document.querySelector('#create-comment-form');
-    commentForm.style.fontSize = `16px`;
+  if (pathname.includes("post.html")) {
+    let editButton = document.createElement('button');
+    editButton.classList.add('edit-post-button')
+    editButton.textContent = 'Edit';
 
-    let commentTitle = comment.name;
-    let commentBody = comment.body;
-    let commentEmail = comment.email;
+    editButton.addEventListener('click', () => {
 
-    commentForm.elements.name.value = firstLetterUpperCase(commentTitle);
-    commentForm.elements.body.value = firstLetterUpperCase(commentBody);
-    commentForm.elements.email.value = firstLetterUpperCase(commentEmail);
-    commentForm.elements['edit-button'].value = 'Edit a comment';
+      let commentForm = document.querySelector('#comments-form');
 
-    commentForm.dataset.editCommentId = comment.id;
+      let commentTitle = comment.name;
+      let commentBody = comment.body;
+      let commentEmail = comment.email;
 
-    function topFunction() {
-      document.documentElement.scrollTop = 0;
-    }
-    topFunction()
+      commentForm.elements.name.value = firstLetterUpperCase(commentTitle);
+      commentForm.elements.body.value = firstLetterUpperCase(commentBody);
+      commentForm.elements.email.value = firstLetterUpperCase(commentEmail);
+      commentForm.elements['edit-button'].value = 'Edit comment';
 
-  })
+      commentForm.dataset.editCommentId = comment.id;
 
-  commentDiv.append(editButton);
+      topFunction()
 
+    })
+
+    commentItem.append(editButton);
+  } else {
+
+  }
 }
 export function firstLetterUpperCase(str) {
   return str[0].toUpperCase() + str.slice(1);
@@ -71,4 +75,7 @@ export function getUserIdUrlParams() {
   let urlParams = new URLSearchParams(queryParams);
   let userId = urlParams.get("user_id");
   return userId;
+}
+function topFunction() {
+  document.documentElement.scrollTop = 0;
 }

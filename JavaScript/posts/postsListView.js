@@ -1,11 +1,16 @@
 import { firstLetterUpperCase, renderComment } from "../functions.js";
+let urlParams = document.location.search;
+let searchParams = new URLSearchParams(urlParams);
+let limit = searchParams.get('limit') ? searchParams.get('limit') : 25;
+let postWrapper = document.querySelector("#posts-wrapper");
+renderPaginationLinks(limit);
 
 function renderPosts(posts, boolean) {
     posts.map((post) => {
 
         let showEditButton = boolean;
-        let postWrapper = document.querySelector("#posts-wrapper");
         let updatedTitleP = firstLetterUpperCase(post.body);
+
 
         let updatedTitle = firstLetterUpperCase(post.title);
 
@@ -63,8 +68,8 @@ function renderPosts(posts, boolean) {
             );
         }
         postWrapper.append(postDiv);
-
         postAuthor.innerHTML = `Author: <a href="User.html?user_id=${post.user.id}">${post.user.name} <br><br></a>`;
+
 
         fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`)
             .then((res) => res.json())
@@ -73,8 +78,11 @@ function renderPosts(posts, boolean) {
                     renderComment(comment, commentDiv);
                 });
             });
+
     });
+
 }
+
 function renderPostsByUserId(user) {
 
     user.posts.map((post) => {
@@ -134,3 +142,36 @@ function renderPostsByUserId(user) {
     });
 }
 export { renderPosts, renderPostsByUserId };
+
+function renderPaginationLinks(pageLimit) {
+    let total = 100;
+    let limit = pageLimit;
+    let pages = Math.ceil(total / limit);
+
+    let paginationWrapper = document.createElement('div');
+    paginationWrapper.classList.add('pagination-wrapper');
+
+    for (let i = 1; i <= pages; i++) {
+        let paginationLink = document.createElement('a');
+        paginationLink.href = `./posts.html?page=${i}&limit=${limit}`;
+        paginationLink.textContent = i;
+        paginationWrapper.append(paginationLink);
+    }
+    // for (let i = 1; i <= pages; i +) {
+    //     let nextLink = document.createElement('a');
+    //     nextLink.href = `./posts.html?page=${1 + 1}&limit=${limit}`;
+    //     nextLink.textContent = `Next`;
+    //     paginationWrapper.append(nextLink);
+    // }
+    let firstPage = document.createElement('a');
+    firstPage.href = `./posts.html?`;
+    firstPage.textContent = `First`;
+    paginationWrapper.prepend(firstPage);
+
+    let lastPage = document.createElement('a');
+    lastPage.href = `./posts.html?page=4&limit=25`;
+    lastPage.textContent = `Last`;
+    paginationWrapper.append(lastPage);
+
+    postWrapper.append(paginationWrapper);
+}

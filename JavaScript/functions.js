@@ -79,20 +79,3 @@ export function getUserIdUrlParams() {
 function topFunction() {
   document.documentElement.scrollTop = 0;
 }
-export function renderPaginationLinks(pageLimit) {
-  let total = 100;
-  let limit = pageLimit;
-  let pages = Math.ceil(total / limit);
-
-  let paginationWrapper = document.createElement('div');
-  paginationWrapper.classList.add('pagination-wrapper');
-
-  for (let i = 1; i <= pages; i++) {
-    let paginationLink = document.createElement('a');
-    paginationLink.href = `./posts.html?page=${i}&limit=${limit}`;
-    paginationLink.textContent = i;
-    paginationWrapper.append(paginationLink);
-  }
-
-  postsWrapper.append(paginationWrapper);
-}

@@ -1,6 +1,7 @@
 import headerView from '../header.js';
 import { renderPosts, renderPostsByUserId } from './postsListView.js';
 import { getPosts, getPostsByUserId } from './postsController.js';
+
 async function init() {
   let queryParams = document.location.search;
   let urlParams = new URLSearchParams(queryParams);

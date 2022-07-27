@@ -4,7 +4,7 @@ import { renderAlbums, renderAlbumsByUserId } from "./albumsListView.js";
 import { getUserIdUrlParams } from '../functions.js';
 
 async function init() {
-  let limitUrl = `&_limit=30`;
+  let limitUrl = `30`;
 
   let userId = getUserIdUrlParams();
 

@@ -4,12 +4,11 @@ import { renderAlbums, renderAlbumsByUserId } from "./albumsListView.js";
 import { getUserIdUrlParams } from '../functions.js';
 
 async function init() {
-  let limitUrl = `30`;
 
+  let limitUrl = 100;
   let userId = getUserIdUrlParams();
 
   headerView();
-
   if (userId) {
     let albumByIdData = await getAlbumsById(userId);
     renderAlbumsByUserId(albumByIdData);

@@ -79,3 +79,60 @@ export function getUserIdUrlParams() {
 function topFunction() {
   document.documentElement.scrollTop = 0;
 }
+
+export function renderPaginationLinks(data, pageName, pageWrapper) {
+
+  let total = 100;
+  let currentPage = Number(data.page);
+  let limit = data.limit;
+  let pages = Math.ceil(total / limit);
+
+  if (pages === 1) {
+    return;
+  }
+  let paginationWrapper = document.createElement('div');
+  paginationWrapper.classList.add('pagination-wrapper');
+
+  if (currentPage !== 1) {
+    let firstPage = document.createElement('a');
+    firstPage.href = `./${pageName}.html?page=1&limit=${limit}`;
+    firstPage.textContent = `First`;
+
+    let previousPage = document.createElement('a');
+    previousPage.href = `./${pageName}.html?page=${currentPage - 1}&limit=${limit}`;
+    previousPage.textContent = 'Previous';
+
+    paginationWrapper.prepend(previousPage, firstPage);
+  }
+  for (let i = 1; i <= pages; i++) {
+    let paginationListItem;
+
+    if (i === currentPage) {
+      paginationListItem = document.createElement('span');
+      paginationListItem.classList.add('current-page');
+    } else {
+      paginationListItem = document.createElement('a');
+      paginationListItem.href = `./${pageName}.html?page=${i}&limit=${limit}`;
+    }
+
+    paginationListItem.classList.add('pagination-item');
+    paginationListItem.textContent = i;
+    paginationWrapper.append(paginationListItem);
+  }
+
+  if (currentPage !== pages) {
+
+    let nextPage = document.createElement('a');
+    nextPage.href = `./${pageName}.html?page=${currentPage + 1}&limit=${limit}`;
+    nextPage.textContent = 'Next';
+
+    let lastPage = document.createElement('a');
+    lastPage.href = `./${pageName}.html?page=4&limit=${limit}`;
+    lastPage.textContent = `Last`;
+
+    paginationWrapper.append(nextPage, lastPage);
+  }
+
+
+  pageWrapper.append(paginationWrapper);
+}

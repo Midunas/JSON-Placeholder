@@ -4,6 +4,7 @@ async function getAlbums(limitUrl) {
   let searchParams = new URLSearchParams(urlParams);
   let limit = searchParams.get('limit') ? searchParams.get('limit') : limitUrl;
   let page = searchParams.get('page') ? searchParams.get('page') : 1;
+  console.log(limit);
 
   let res = await fetch(`https://jsonplaceholder.typicode.com/albums?_expand=user&_embed=photos&_page=${page}&_limit=${limit}`);
   let albumData = await res.json();

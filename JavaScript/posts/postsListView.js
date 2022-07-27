@@ -3,12 +3,13 @@ import { firstLetterUpperCase, renderComment, renderPaginationLinks } from "../f
 let postWrapper = document.querySelector("#posts-wrapper");
 let urlParams = document.location.search;
 let searchParams = new URLSearchParams(urlParams);
-let limit = searchParams.get('limit') ? searchParams.get('limit') : 25;
 let page = searchParams.get('page') ? searchParams.get('page') : 1;
-renderPaginationLinks({ limit, page }, 'posts', postWrapper);
-
 
 function renderPosts(posts, boolean) {
+
+    let limit = searchParams.get('limit') ? searchParams.get('limit') : 25;
+    renderPaginationLinks({ limit, page }, './posts.html?', postWrapper, 100);
+
     posts.map((post) => {
 
         let showEditButton = boolean;
@@ -86,9 +87,16 @@ function renderPosts(posts, boolean) {
 
 }
 
-function renderPostsByUserId(user) {
+function renderPostsByUserId(posts) {
 
-    user.posts.map((post) => {
+
+    let limit = searchParams.get('limit') ? searchParams.get('limit') : 2;
+    let queryParams = document.location.search;
+    let urlParams = new URLSearchParams(queryParams);
+    let userId = urlParams.get("user_id");
+    renderPaginationLinks({ limit, page }, `./posts.html?user_id=${userId}&`, postWrapper, 10);
+
+    posts.map((post) => {
         let postWrapper = document.querySelector("#posts-wrapper");
         let paragraph = post.body;
 
@@ -133,7 +141,7 @@ function renderPostsByUserId(user) {
         );
         postWrapper.append(postDiv);
 
-        postAuthor.innerHTML = `Author: <a href="User.html?user_id=${user.id}">${user.name} <br><br></a>`;
+        postAuthor.innerHTML = `<strong> Author: </strong> <a href="User.html?user_id=${post.user.id}"><strong> ${post.user.name} </strong> <br><br></a>`;
 
         fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`)
             .then((res) => res.json())

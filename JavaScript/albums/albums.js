@@ -5,7 +5,7 @@ import { getUserIdUrlParams } from '../functions.js';
 
 async function init() {
 
-  let limitUrl = 100;
+  let limitUrl = 9;
   let userId = getUserIdUrlParams();
 
   headerView();

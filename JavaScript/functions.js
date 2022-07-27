@@ -80,9 +80,9 @@ function topFunction() {
   document.documentElement.scrollTop = 0;
 }
 
-export function renderPaginationLinks(data, pageName, pageWrapper) {
+export function renderPaginationLinks(data, pageName, pageWrapper, totalCount) {
 
-  let total = 100;
+  let total = totalCount;
   let currentPage = Number(data.page);
   let limit = data.limit;
   let pages = Math.ceil(total / limit);
@@ -95,11 +95,11 @@ export function renderPaginationLinks(data, pageName, pageWrapper) {
 
   if (currentPage !== 1) {
     let firstPage = document.createElement('a');
-    firstPage.href = `./${pageName}.html?page=1&limit=${limit}`;
+    firstPage.href = `${pageName}page=1&limit=${limit}`;
     firstPage.textContent = `First`;
 
     let previousPage = document.createElement('a');
-    previousPage.href = `./${pageName}.html?page=${currentPage - 1}&limit=${limit}`;
+    previousPage.href = `${pageName}page=${currentPage - 1}&limit=${limit}`;
     previousPage.textContent = 'Previous';
 
     paginationWrapper.prepend(previousPage, firstPage);
@@ -112,7 +112,7 @@ export function renderPaginationLinks(data, pageName, pageWrapper) {
       paginationListItem.classList.add('current-page');
     } else {
       paginationListItem = document.createElement('a');
-      paginationListItem.href = `./${pageName}.html?page=${i}&limit=${limit}`;
+      paginationListItem.href = `${pageName}page=${i}&limit=${limit}`;
     }
 
     paginationListItem.classList.add('pagination-item');
@@ -123,11 +123,11 @@ export function renderPaginationLinks(data, pageName, pageWrapper) {
   if (currentPage !== pages) {
 
     let nextPage = document.createElement('a');
-    nextPage.href = `./${pageName}.html?page=${currentPage + 1}&limit=${limit}`;
+    nextPage.href = `${pageName}page=${currentPage + 1}&limit=${limit}`;
     nextPage.textContent = 'Next';
 
     let lastPage = document.createElement('a');
-    lastPage.href = `./${pageName}.html?page=4&limit=${limit}`;
+    lastPage.href = `${pageName}page=4&limit=${limit}`;
     lastPage.textContent = `Last`;
 
     paginationWrapper.append(nextPage, lastPage);

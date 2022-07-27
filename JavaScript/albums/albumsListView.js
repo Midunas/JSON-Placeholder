@@ -3,10 +3,9 @@ import { firstLetterUpperCase, getRandomInt, renderPaginationLinks } from "../fu
 let albumsWrapper = document.getElementById("albums-wrapper");
 let urlParams = document.location.search;
 let searchParams = new URLSearchParams(urlParams);
-let limit = searchParams.get('limit') ? searchParams.get('limit') : 30;
+let limit = searchParams.get('limit') ? searchParams.get('limit') : 9;
 let page = searchParams.get('page') ? searchParams.get('page') : 1;
-// renderPaginationLinks({ limit, page });
-renderPaginationLinks({ limit, page }, `./albums.html?`, albumsWrapper);
+renderPaginationLinks({ limit, page }, `./albums.html?`, albumsWrapper, 49);
 
 function renderSingleAlbum(data) {
 

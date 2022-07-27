@@ -72,7 +72,7 @@ function renderPosts(posts, boolean) {
             );
         }
         postWrapper.append(postDiv);
-        postAuthor.innerHTML = `Author: <a href="User.html?user_id=${post.user.id}">${post.user.name} <br><br></a>`;
+        postAuthor.innerHTML = `<strong> Author: </strong> <a href="User.html?user_id=${post.user.id}"><strong> ${post.user.name} </strong> <br><br></a>`;
 
 
         fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`)

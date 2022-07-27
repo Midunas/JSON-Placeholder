@@ -65,7 +65,7 @@ function renderPost() {
       fetch("https://jsonplaceholder.typicode.com/users/" + post.userId)
         .then((res) => res.json())
         .then((user) => {
-          postAuthor.innerHTML = `Author: <a href="User.html?user_id=${user.id}">${user.name} <br><br></a>`;
+          postAuthor.innerHTML = ` <strong> Author: </strong> <a href="User.html?user_id=${user.id}"> <strong> ${user.name} </strong><br><br></a>`;
         });
 
       fetch(`https://jsonplaceholder.typicode.com/posts/${post.id}/comments`)

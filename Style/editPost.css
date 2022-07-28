@@ -1,0 +1,45 @@
+body{
+    margin: auto;
+    background: #f2f2f2;
+}
+.edit-post-button{
+    text-decoration: none;
+    background: #4966b1;
+    color: #fff;
+    padding: 8px 17px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0px 1px 15px 0px rgb(73 102 177 / 70%);
+    float: right;
+}
+#wrapper{
+    margin: auto;
+    width: 1040px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 100px;
+}
+#post-wrapper{
+    width: 1020px;
+    margin: auto;
+    width: 50%;
+}
+.post-wrapper{
+    background-color: white;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 8px;
+    width: 1020px;
+    margin: auto;
+    width: 50%;
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+#edit-post-form{
+    margin: auto;
+}
+.form-control{
+    width: 20%;
+}

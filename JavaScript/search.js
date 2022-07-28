@@ -1,8 +1,10 @@
-import {firstLetterUpperCase, renderListElement} from './functions.js';
+import { firstLetterUpperCase, renderListElement } from './functions.js';
 import headerView from './header.js';
+
 let searchResults = document.querySelector("#search-results-form");
 let usersList = document.createElement("ul");
 usersList.classList.add("search-result");
+
 let usersListTitle = document.createElement("h3");
 
 let postsList = document.createElement("ul");

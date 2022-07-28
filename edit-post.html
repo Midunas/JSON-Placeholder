@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Post</title>
+    <link rel="stylesheet" href="./Style/navbar.css" />
+    <link rel="stylesheet" href="./Style/createPost.css" />
+    <link rel="stylesheet" href="./Style/editPost.css" />
+  </head>
+  <body>
+    <div id="wrapper">
+      <form id="edit-post-form">
+        <div class="form-control">
+          <label for="post-title">Post title:</label>
+          <input type="text" name="title" id="post-title" />
+        </div>
+
+        <div class="form-control">
+          <label for="post-content">Post content:</label>
+          <textarea
+            name="content"
+            id="post-content"
+            cols="50"
+            rows="10"
+          ></textarea>
+        </div>
+
+        <div class="form-control">
+          <label for="post-author">Post author:</label>
+          <select name="author" id="post-author"></select>
+        </div>
+
+        <input type="submit" value="Edit" class="edit-post-button" />
+      </form>
+    </div>
+    <script type="module" src="./JavaScript/editPost/editPost.js"></script>
+  </body>
+</html>

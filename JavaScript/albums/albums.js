@@ -1,15 +1,14 @@
 import headerView from "../header.js";
 import { getAlbumsById, getAlbums } from "./albumsController.js";
 import { renderAlbums, renderAlbumsByUserId } from "./albumsListView.js";
+import { getUserIdUrlParams } from '../functions.js';
 
 async function init() {
-  let limitUrl = `&_limit=30`;
-  let queryParams = document.location.search;
-  let urlParams = new URLSearchParams(queryParams);
-  let userId = urlParams.get("user_id");
+
+  let limitUrl = 9;
+  let userId = getUserIdUrlParams();
 
   headerView();
-
   if (userId) {
     let albumByIdData = await getAlbumsById(userId);
     renderAlbumsByUserId(albumByIdData);

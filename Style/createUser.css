@@ -11,54 +11,43 @@ h1{
     width: 1040px;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+}
+#create-user-form {
+    margin: auto;
+    margin-top: 200px;
+}
+.form-control{
+    padding: 5px;
+    justify-content: start;
 }
 .user-wrap{
     width: 30%;
-    height: 110%;
+    height: 100%;
     margin: 15px;
+    margin-top: 200px;
     text-align: center;
     background-color: #3f71bd;
     color: white;
     font-size: 17px;
     position: sticky;
 }
-.header{
+#edit-user-form {
     margin: auto;
-    text-align: center;
-}
-a{
-    color: white;
-}
-.read-more{
-    color: black;
-}
-.view-data-button{
-    padding: 10px;
-    margin-bottom: 10px;
-    border-radius: 20px;
-    border: none;
-}
-.post-wrap{
-    width: 48%;   
-}
-.post-item{
-    width: 100%;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    border-radius: 8px;
+    margin-top: 200px;
     background-color: white;
-    margin-bottom: 25px;
-    padding: 10px;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid black;
 }
-.edit-post-button{
+#edit-user-button{
     text-decoration: none;
     background: #4966b1;
     color: #fff;
-    padding: 8px 17px;
+    padding: 8px 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     box-shadow: 0px 1px 15px 0px rgb(73 102 177 / 70%);
+    float: right;
 }

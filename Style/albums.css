@@ -42,3 +42,17 @@ body{
     align-items: center;
     text-align: center;
 }
+ a{
+    text-decoration: none;
+    color: rgb(85, 49, 6);
+    font-size: 18px;
+}
+.pagination-wrapper{
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.pagination-wrapper a, .pagination-wrapper span {
+    margin-right: 10px;
+}
